@@ -98,7 +98,7 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-nnoremap <silent> <space>m  :<C-u>CocList mru<CR>
+nnoremap <silent> <space>m  :<C-u>CocList gfiles<CR>
 
 nnoremap <silent> /  :<C-u>CocList  lines<CR>
 

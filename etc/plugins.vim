@@ -18,7 +18,8 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 "" Vim-Session
 	Plug 'xolox/vim-misc'
 	" Plug 'xolox/vim-session'
-    let g:session_autosave = 'no'
+    " let g:session_autosave = 'no'
+    " Plug 'gioele/vim-autoswap'
 
 
 "" Snippets

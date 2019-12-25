@@ -140,3 +140,4 @@ if has('folding')
 	set foldmethod=syntax
 	set foldlevelstart=99
 endif
+set noswapfile
