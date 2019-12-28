@@ -1,4 +1,13 @@
-nmap <silent> <m-=> V<Plug>TranslateV
+func! LangSelector(var)
+    if a:var
+        let g:translator_target_lang = 'zh'
+    else
+        let g:translator_target_lang = 'en'
+    endif
+endfunc
+" let translator_target_lang = 'auto'
+nmap <silent> <m-=> :call LangSelector(1)<cr><esc>V<Plug>TranslateV
+nmap <silent> <leader>r :call LangSelector(0)<cr><esc>V<Plug>TranslateV
 
 " vmap <silent> <Leader>t <Plug>TranslateV
 " vmap <silent> <Leader>t <Plug>TranslateV
@@ -8,5 +17,5 @@ nmap <silent> <m-=> V<Plug>TranslateV
 " " Replace the text with translation
 " nmap <silent> <Leader>r <Plug>TranslateR
 " vmap <silent> <Leader> r <Plug> TranslateRV。
-let g:translator_proxy_url = 'socks5://127.0.0.1:8089'
+let g:translator_proxy_url = 'http://127.0.0.1:8090/'
 let g:translator_default_engines=['google']
