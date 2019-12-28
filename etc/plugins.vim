@@ -11,7 +11,8 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 	Plug 'sheerun/vim-polyglot'
 	Plug 'kshenoy/vim-signature'
 	Plug 'sbdchd/neoformat'
-	Plug 'rhysd/accelerated-jk'
+    Plug 'rhysd/accelerated-jk'
+    Plug 'skywind3000/asyncrun.vim'
 	nmap j <Plug>(accelerated_jk_gj)
 	nmap k <Plug>(accelerated_jk_gk)
 
@@ -20,7 +21,6 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 	" Plug 'xolox/vim-session'
     " let g:session_autosave = 'no'
     " Plug 'gioele/vim-autoswap'
-
 
 "" Snippets
 	" Plug 'SirVer/ultisnips'
@@ -57,11 +57,16 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 		set undofile
 	endif
 	Plug 'bagrat/vim-buffet'
+    nnoremap  ]b :bn<CR>
+    nnoremap  [b :bp<CR>
 
-" Check and Read
+
+" Check and Read dict
 	Plug 'KabbAmine/zeavim.vim'
 	nmap <silent><m-f> <esc>viw<Plug>ZVVisSelection
 	nmap <leader>d <esc>:Docset 
+    Plug 'voldikss/vim-translator'
+    let g:translator_default_engines=['google']
 
 " Tags
     Plug 'ludovicchabant/vim-gutentags'

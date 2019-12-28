@@ -124,7 +124,7 @@ augroup Smartf
 augroup end
 
 
-let g:coc_global_extensions =['coc-imselect','coc-html','coc-java','coc-tabnine','coc-css','coc-snippets','coc-prettier','coc-eslint','coc-emmet','coc-tsserver','coc-pairs','coc-json','coc-python','coc-imselect','coc-highlight','coc-git','coc-emoji','coc-lists','coc-stylelint','coc-yaml','coc-template','coc-marketplace','coc-gitignore','coc-yank','coc-smartf','coc-calc','coc-explorer','coc-translator','coc-flow','coc-vimlsp','coc-sh']
+let g:coc_global_extensions =['coc-imselect','coc-html','coc-java','coc-tabnine','coc-css','coc-snippets','coc-prettier','coc-eslint','coc-emmet','coc-tsserver','coc-pairs','coc-json','coc-python','coc-imselect','coc-highlight','coc-git','coc-emoji','coc-lists','coc-stylelint','coc-yaml','coc-template','coc-marketplace','coc-gitignore','coc-yank','coc-smartf','coc-calc','coc-explorer','coc-translator','coc-flow','coc-vimlsp','coc-sh','coc-tslint-plugin','coc-vetur','coc-angular']
 
 " coc-explorer
 noremap <silent> <space>e :execute 'CocCommand explorer' .
@@ -148,4 +148,4 @@ endfunc
 
 
 " coc-translator
-noremap <silent><space>r <Plug>(coc-translator-e)
+" nmap <m-=> <Plug>(coc-translator-e)
