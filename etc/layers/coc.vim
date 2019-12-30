@@ -29,7 +29,14 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+" nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call GotoSticky()<CR>:call <SID>show_documentation()<CR>call 
+
+function GotoSticky()
+    let s:col = col('.')-1
+    execute "normal! z\<cr>0".s:col."l" 
+endfunction
+
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)

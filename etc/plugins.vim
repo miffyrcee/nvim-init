@@ -66,7 +66,6 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 	nmap <silent><m-f> <esc>viw<Plug>ZVVisSelection
 	nmap <leader>d <esc>:Docset 
     Plug 'voldikss/vim-translator'
-    let g:translator_default_engines=['google']
 
 " Tags
     Plug 'ludovicchabant/vim-gutentags'

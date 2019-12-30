@@ -5,25 +5,25 @@ if has('python') || has('python3')
 	" let g:Lf_StlSeparator = { 'left': "", 'right':"" }
 
 	" CTRL+p 打开文件模糊匹配
-	let g:Lf_ShortcutF = '<c-p>'
+	" let g:Lf_ShortcutF = '<c-p>'
 
 	" ALT+n 打开 buffer 模糊匹配
-	let g:Lf_ShortcutB = '<m-n>'
+	" let g:Lf_ShortcutB = '<m-n>'
 
 	" CTRL+n 打开最近使用的文件 MRU，进行模糊匹配
 	" noremap <c-n> :LeaderfMru<cr>
 
 	" ALT+p 打开函数列表，按 i 进入模糊匹配，ESC 退出
-	noremap <m-p> :LeaderfFunction!<cr>
+	" noremap <m-p> :LeaderfFunction!<cr>
 
 	" ALT+SHIFT+p 打开 tag 列表，i 进入模糊匹配，ESC退出
-	noremap <m-P> :LeaderfBufTag!<cr>
+	" noremap <m-P> :LeaderfBufTag!<cr>
 
 	" ALT+n 打开 buffer 列表进行模糊匹配
-	noremap <m-n> :LeaderfBuffer<cr>
+	" noremap <m-n> :LeaderfBuffer<cr>
 
 	" 全局 tags 模糊匹配
-	noremap <m-m> :LeaderfTag<cr>
+	" noremap <m-m> :LeaderfTag<cr>
 
 	" 最大历史文件保存 2048 个
 	let g:Lf_MruMaxFiles = 2048
