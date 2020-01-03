@@ -1,6 +1,18 @@
 noremap <silent> <leader>q :qall<cr>
-let s:cword = expand('<cword>')
-lmap <silent> <leader>c z<cr>
+
+func! DeleteRight()
+    let s:line = getline(line('.'))
+    let s:pos = stridx(s:line,'=')
+    let s:rword = strcharpart(s:line,s:pos,len(s:line)-s:pos)
+    " substitute('/'.s:rword,)
+endfunc
+
+nmap <silent> <m-'> :call SkipEqual()<cr>
+func! SkipEqual()
+    let s:pos = stridx(getline(line('.')),'=')
+    exe 'norm! '.s:pos.'l'
+endfunc
+
 "----------------------------------------------------------------------
 " INSERT 模式下使用 EMACS 键位
 "----------------------------------------------------------------------

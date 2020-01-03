@@ -11,7 +11,10 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 	Plug 'sheerun/vim-polyglot'
 	Plug 'kshenoy/vim-signature'
 	Plug 'sbdchd/neoformat'
+    Plug 'junegunn/vim-easy-align'
     Plug 'rhysd/accelerated-jk'
+    xmap ga <Plug>(EasyAlign)
+    nmap ga <Plug>(EasyAlign)
     Plug 'skywind3000/asyncrun.vim'
 	nmap j <Plug>(accelerated_jk_gj)
 	nmap k <Plug>(accelerated_jk_gk)

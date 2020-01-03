@@ -34,7 +34,7 @@ nnoremap <silent> K :call GotoSticky()<CR>:call <SID>show_documentation()<CR>cal
 
 function GotoSticky()
     let s:col = col('.')-1
-    execute "normal! z\<cr>0".s:col."l" 
+    exe "norm! z\<cr>0".s:col."l" 
 endfunction
 
 
