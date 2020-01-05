@@ -243,7 +243,7 @@
     "model for tf1.0": {
         "prefix": "model1.0",
         "body": [
-            "${1:models} = tf.keras.models.Sequential([",
+            "${1:model} = tf.keras.models.Sequential([",
             "\ttf.keras.layers.Dense(16, input_dim=1, activation='relu'),",
             "\ttf.keras.layers.Dense(32, activation='relu'),",
             "\ttf.keras.layers.Dense(1)",
@@ -264,7 +264,7 @@
     "model for tf2.0": {
         "prefix": "model2.0",
         "body": [
-            "class ${1:models}(tf.keras.models.Model):",
+            "class ${1:custom_model}(tf.keras.models.Model):",
             "    def __init__(self):",
             "        super().__init__(self)",
             "        self.conv1 = tf.keras.layers.Conv2D(32, 3, activation='relu')",
@@ -278,7 +278,7 @@
             "        return self.d2(x)",
 
 
-            "model = ${1:MyModel}()"
+            "model = ${1:custom_model}()"
         ],
         "description": "Code snippet for an model 2.0"
     },
@@ -302,7 +302,10 @@
             "import matplotlib.pyplot as plt",
             "import numpy as np",
             "import tensorflow as tf",
-            "import tensorflow_probability.python as tfp"
+            "import tensorflow_probability.python as tfp",
+
+            "tfd = tfp.distributions"
+
         ],
         "description": "Code snippet for import tf"
     },
@@ -328,5 +331,58 @@
             "${1:funcname} = lambda x: "
         ],
         "description": "Code snippet for super function"
+    },
+    "import socks": {
+        "prefix": "import for socks",
+        "body": [
+            "import socks",
+            "import socket",
+            "socks.set_default_proxy(socks.SOCKS5, '127.0.0.1', 8089)",
+            "socket.socket = socks.socksocket"
+        ],
+        "description": "Code snippet for super function"
+    },
+    "fig": {
+        "prefix": "fig",
+        "body": [
+            "fig, axs = plt.subplots(2, 2)"
+        ],
+        "description": "Code snippet for fig"
+    },
+    "example": {
+        "prefix": "example",
+        "body": [
+            "train_loss = tf.keras.metrics.Mean(name='train_loss')",
+            "train_accuracy = tf.keras.metrics.SparseCategoricalAccuracy(name='train_accuracy')",
+
+            "@tf.function",
+            "def train_step(images, labels):",
+            "    with tf.GradientTape() as tape:",
+            "        predictions = model(images)",
+            "        loss = loss_object(labels, predictions)",
+            "    gradients = tape.gradient(loss, model.trainable_variables)",
+            "    optimizer.apply_gradients(zip(gradients, model.trainable_variables))",
+            "",
+            "    train_loss(loss)",
+            "    train_accuracy(labels, predictions)"
+        ],
+        "description": "Code snippet for example"
+    },
+    "import os": {
+        "prefix": "import os",
+        "body": [
+            "import os",
+            "current_dir = os.path.dirname(__file__)",
+            "filepath = os.path.join(current_dir,'${filename}')"
+        ],
+        "description": "Code snippet for os filepath"
+    },
+
+    "open": {
+        "prefix": "open",
+        "body": [
+            "with open(${1:filepath },'r') as fr:"
+        ],
+        "description": "Code snippet for open"
     }
 }
