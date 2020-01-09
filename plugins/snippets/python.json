@@ -244,9 +244,9 @@
         "prefix": "model1.0",
         "body": [
             "${1:model} = tf.keras.models.Sequential([",
-            "\ttf.keras.layers.Dense(16, input_dim=1, activation='relu'),",
-            "\ttf.keras.layers.Dense(32, activation='relu'),",
-            "\ttf.keras.layers.Dense(1)",
+            "   tf.keras.layers.Dense(32, activation=tf.nn.relu, input_shape=(4,)),",
+            "   tf.keras.layers.Dense(16, activation=tf.nn.relu),",
+            "   tf.keras.layers.Dense(3)",
             "])"
         ],
         "description": "Code snippet for an model 1.0"
@@ -277,22 +277,29 @@
             "        x = self.d1(x)",
             "        return self.d2(x)",
 
-
             "model = ${1:custom_model}()"
         ],
         "description": "Code snippet for an model 2.0"
     },
-    "grad": {
-        "prefix": "grad",
+    "tape": {
+        "prefix": "tape",
         "body": [
             "x = tf.constant(3.0)",
-            "with tf.GradientTape() as tape:",
+            "with tf.GradientTape(persistent=True) as tape:",
             "    tape.watch(x)",
-            "    with tf.GradientTape() as gg:",
-            "        gg.watch(x)",
-            "        y = x * x",
-            "    dy_dx = gg.gradient(y, x)",
-            "d2y_dx2 = tape.gradient(dy_dx, x)"
+            "    y = x * x",
+            "    z = y * y",
+            "dz_dx = tape.gradient(z, x)",
+            "dy_dx = tape.gradient(y, x)",
+            "del tape"
+        ],
+        "description": "Code snippet for an GradTape"
+    },
+    "gradients": {
+        "prefix": "gradients",
+        "body": [
+            "with tf.GradientTape() as tape:",
+            "    gradients = tape.gradient(loss, model.trainable_variables)"
         ],
         "description": "Code snippet for an GradTape"
     },
@@ -333,12 +340,18 @@
         "description": "Code snippet for super function"
     },
     "import socks": {
-        "prefix": "import for socks",
+        "prefix": "import socks",
         "body": [
-            "import socks",
             "import socket",
-            "socks.set_default_proxy(socks.SOCKS5, '127.0.0.1', 8089)",
-            "socket.socket = socks.socksocket"
+            "port_scanner = socket.socket(socket.AF_INET, socket.SOCK_STREAM)",
+            "try:",
+            "    port_scanner.connect(('127.0.0.1', 8089))",
+            "    import socks",
+            "    socks.set_default_proxy(socks.SOCKS5, '127.0.0.1', 8089)",
+            "    socket.socket = socks.socksocket",
+            "except ConnectionRefusedError:",
+            "    print('no port')"
+
         ],
         "description": "Code snippet for super function"
     },
@@ -349,24 +362,23 @@
         ],
         "description": "Code snippet for fig"
     },
-    "example": {
-        "prefix": "example",
+    "train": {
+        "prefix": "train",
         "body": [
-            "train_loss = tf.keras.metrics.Mean(name='train_loss')",
-            "train_accuracy = tf.keras.metrics.SparseCategoricalAccuracy(name='train_accuracy')",
-
-            "@tf.function",
-            "def train_step(images, labels):",
+            "optimizer = tf.keras.optimizers.Adam()",
+            "",
+            "@tf.function()",
+            "def train_step(x, y):",
             "    with tf.GradientTape() as tape:",
-            "        predictions = model(images)",
-            "        loss = loss_object(labels, predictions)",
+            "        y_pred = model.call(x)",
+            "        y_pred = tf.reduce_mean(y_pred, -1)",
+            "        loss = tf.losses.hinge(y, y_pred)",
             "    gradients = tape.gradient(loss, model.trainable_variables)",
             "    optimizer.apply_gradients(zip(gradients, model.trainable_variables))",
-            "",
-            "    train_loss(loss)",
-            "    train_accuracy(labels, predictions)"
+            "    return loss"
+
         ],
-        "description": "Code snippet for example"
+        "description": "Code snippet for train"
     },
     "import os": {
         "prefix": "import os",
@@ -375,14 +387,97 @@
             "current_dir = os.path.dirname(__file__)",
             "filepath = os.path.join(current_dir,'${filename}')"
         ],
-        "description": "Code snippet for os filepath"
+        "description": "Code snippet for os"
     },
 
     "open": {
-        "prefix": "open",
+        "prefix": "with open",
         "body": [
             "with open(${1:filepath },'r') as fr:"
         ],
-        "description": "Code snippet for open"
+        "description": "Code snippet for super function"
+    },
+    "dataset": {
+        "prefix": "dataset",
+        "body": [
+            "def load_data(fp):",
+            "    dataset = tf.data.TextLineDataset(fp)",
+            "    dataset = dataset.skip(1)",
+            "",
+            "    def split(line):",
+            "        line = line.numpy().decode('utf-8').split(',')",
+            "        line = tf.strings.to_number(line)",
+            "        return line[:-1], int(line[-1])",
+            "",
+            "    def in_out(line):",
+            "        return tf.py_function(split, inp=[line], Tout=[tf.float32, tf.float32])",
+            "",
+            "    dataset = dataset.map(in_out)",
+            "    return dataset"
+        ],
+        "description": "Code snippet for wrapper"
+    },
+    "wrapper": {
+        "prefix": "def wrapper",
+        "body": [
+            "def wrapper(func):",
+            "    @functools.wraps(func)",
+            "    def new_func(*args,**kwargs):",
+            "        for arg in args:",
+            "            pass",
+            "        for kwarg in kwargs:",
+            "            pass",
+            "        return func(*args,**kwargs)"
+        ],
+        "description": "Code snippet for wrapper"
+    },
+    "compile": {
+        "prefix": "compile",
+        "body": [
+            "metrics = [tf.metrics.SparseCategoricalCrossentropy(name='accuracy')]",
+            "model.compile(optimizer=tf.optimizers.Adam(lr=1e-3),",
+            "              loss=tf.losses.SparseCategoricalCrossentropy(),",
+            "              metrics=metrics)"
+        ],
+
+        "description": "Code snippet for compile"
+    },
+
+    "tf.keras.Model": {
+        "prefix": "model",
+        "body": [
+            "class Dense(tf.keras.Model):",
+            "    def __init__(self, input_features, output_features, name=None):",
+            "        super().__init__(name=name)",
+            "        self.w = tf.Variable(tf.random.normal(",
+            "            (input_features, output_features)),",
+            "                             name='w')",
+            "        self.b = tf.Variable(tf.zeros(output_features), name='b')",
+            "",
+            "    def __call__(self, x):",
+            "        y = tf.matmul(x, self.w) + self.b",
+            "        return tf.nn.relu(y)"
+        ],
+        "description": "Code snippet for Module"
+    },
+
+    "dfs": {
+        "prefix": "dfs",
+        "body": [
+            "star_pos = []",
+            "stack = list()",
+            "stack.append(star_pos)",
+            "for _ in range(100):",
+            "    if stack:",
+            "        sp = stack.pop()",
+            "        if len(sp) == 10:",
+            "            print(sp)",
+            "            continue",
+            "        for po in range(25):",
+            "            pass",
+            "    else:",
+            "        break"
+        ],
+        "description": "Code snippet for Module"
     }
 }

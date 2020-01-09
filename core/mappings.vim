@@ -1,4 +1,5 @@
 noremap <silent> <leader>q :qall<cr>
+noremap <silent> <leader>w :w ! sudo tee %<cr>
 
 func! DeleteRight()
     let s:line = getline(line('.'))
