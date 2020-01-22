@@ -141,3 +141,4 @@ if has('folding')
 	set foldlevelstart=99
 endif
 set noswapfile
+set nobackup

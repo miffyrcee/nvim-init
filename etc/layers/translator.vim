@@ -6,7 +6,7 @@ func! LangSelector(var)
     endif
 endfunc
 nmap <silent> <m-p> :call LangSelector(1)<cr><esc>V<Plug>TranslateV
-nmap <silent> <m-=> :call LangSelector(0)<cr><esc>V<Plug>TranslateV
+nmap <silent> <m-=> :call LangSelector(0)<cr><esc>V<Plug>TranslateRV
 
 " vmap <silent> <Leader>t <Plug>TranslateV
 " vmap <silent> <Leader>t <Plug>TranslateV

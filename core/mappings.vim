@@ -1,19 +1,37 @@
 noremap <silent> <leader>q :qall<cr>
 noremap <silent> <leader>w :w ! sudo tee %<cr>
+nnoremap <F6>：UndotreeToggle <cr>
 
-func! DeleteRight()
-    let s:line = getline(line('.'))
-    let s:pos = stridx(s:line,'=')
-    let s:rword = strcharpart(s:line,s:pos,len(s:line)-s:pos)
-    " substitute('/'.s:rword,)
+
+nmap <silent> <F6> :call Run()<cr>
+func Run()
+    if &ft == 'html'
+        exec ':AsyncStop'
+        exec ':AsyncRun python3 -m http.server'
+    elseif &ft == 'javascript' 
+        exec ':AsyncStop'
+        exec ':AsyncRun python3 -m http.server'
+    endif
 endfunc
 
-nmap <silent> <m-'> :call SkipEqual()<cr>
-func! SkipEqual()
-    let s:pos = stridx(getline(line('.')),'=')
-    exe 'norm! '.s:pos.'l'
+
+nmap <silent> <m-"> :call AddE()<cr>
+func! AddE()
+    if &ft == 'python'
+        exec 'norm yssb'
+        exec '.s/^/print/g'
+    elseif &ft == 'javascript'
+        exec 'norm yssb'
+        exec '.s/^/console\.log/g'
+    endif
 endfunc
 
+nmap <silent> <m-'> :call DeleteE()<cr>$a=
+func! DeleteE()
+    if stridx(getline('.'),'=')
+        exec '.s/=.*//g'
+    endif
+endfunc
 "----------------------------------------------------------------------
 " INSERT 模式下使用 EMACS 键位
 "----------------------------------------------------------------------

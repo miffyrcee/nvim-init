@@ -7,7 +7,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-fugitive'
-	Plug 'airblade/vim-gitgutter'
+	" Plug 'airblade/vim-gitgutter'
 	Plug 'sheerun/vim-polyglot'
 	Plug 'kshenoy/vim-signature'
 	Plug 'sbdchd/neoformat'
@@ -54,7 +54,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Buffer
 	Plug 'junegunn/vim-peekaboo'
-	Plug 'mbbill/undotree'
+    Plug 'simnalamburt/vim-mundo'
 	if has("persistent_undo")
 		set undodir=$HOME/.cache/undog.log
 		set undofile
@@ -69,6 +69,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 	nmap <silent><m-f> <esc>viw<Plug>ZVVisSelection
 	nmap <leader>d <esc>:Docset 
     Plug 'voldikss/vim-translator'
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Tags
     Plug 'ludovicchabant/vim-gutentags'

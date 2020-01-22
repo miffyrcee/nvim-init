@@ -97,7 +97,7 @@ nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
 nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <space>w  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
@@ -106,8 +106,9 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 nnoremap <silent> <space>m  :<C-u>CocList gfiles<CR>
+nnoremap <silent> <m-m>  :<C-u>CocList mru<CR>
 
-nnoremap <silent> /  :<C-u>CocList  lines<CR>
+nnoremap <silent> /  :<C-u>CocList lines<CR>
 
 nnoremap <silent> <space>b  :<C-u>CocList buffers<CR>
 
@@ -115,9 +116,11 @@ nnoremap <silent> <space>h  :<C-u>CocList cmdhistory<CR>
 
 nnoremap <silent> <space>l  :<C-u>CocList lists<CR>
 
+nnoremap <silent> <m-g> :CocSearch expand('<cword>')<cr>
+
 nnoremap <silent> #  :exe 'CocList -I --number-select --normal --input='.expand('<cword>').' words'<CR>
 
-nnoremap <silent> <space>w  :exe 'CocList -I --normal --input='.expand('<cword>').' grep'<CR>
+nnoremap <silent> <space>s  :exe 'CocList -I --normal --input='.expand('<cword>').' grep'<CR>
 
 " coc-smartf
 nmap f <Plug>(coc-smartf-forward)
@@ -131,14 +134,9 @@ augroup Smartf
 augroup end
 
 
-let g:coc_global_extensions =['coc-imselect','coc-html','coc-java','coc-tabnine','coc-css','coc-snippets','coc-prettier','coc-eslint','coc-emmet','coc-tsserver','coc-pairs','coc-json','coc-python','coc-imselect','coc-highlight','coc-git','coc-emoji','coc-lists','coc-stylelint','coc-yaml','coc-template','coc-marketplace','coc-gitignore','coc-yank','coc-smartf','coc-calc','coc-explorer','coc-flow','coc-vimlsp','coc-sh','coc-tslint-plugin','coc-vetur','coc-angular']
+let g:coc_global_extensions =['coc-imselect','coc-html','coc-java','coc-tabnine','coc-css','coc-snippets','coc-eslint','coc-emmet','coc-tsserver','coc-pairs','coc-json','coc-python','coc-imselect','coc-highlight','coc-git','coc-emoji','coc-lists','coc-stylelint','coc-yaml','coc-template','coc-marketplace','coc-gitignore','coc-yank','coc-smartf','coc-calc','coc-explorer','coc-prettier','coc-vimlsp','coc-sh','coc-tslint-plugin','coc-vetur','coc-angular']
 
-" coc-explorer
-noremap <silent> <space>e :execute 'CocCommand explorer' .
-	\ ' --toggle' .
-	\ ' --sources=buffer+,file+' .
-	\ ' --file-columns=git,selection,icon,clip,indent,filename,size ' . expand('%:p:h')<CR>
-
+noremap <silent> <space>e :CocCommand explorer<cr>
 " coc-cursor
 nmap <silent> <C-c> <Plug>(coc-cursors-position)
 nmap <expr> <silent> <C-m> <SID>select_current_word()
@@ -152,3 +150,6 @@ function! s:select_current_word()
 	endif
 	return "*\<Plug>(coc-cursors-word):nohlsearch\<CR>"
 endfunc
+
+" prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile

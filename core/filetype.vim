@@ -15,7 +15,7 @@ augroup user_plugin_filetype "{{{
 
     autocmd FileType css setlocal equalprg=csstidy\ -\ --silent=true
 
-    autocmd BufWritePre *.js,*.jsx,*.less,*.css,*.html Neoformat
+    " autocmd BufWritePre *.js,*.jsx,*.less,*.css,*.html Neoformat
 
     autocmd FileType javascript,javascriptreact set shiftwidth=2
 
@@ -30,6 +30,6 @@ augroup user_plugin_filetype "{{{
      autocmd User VimagitEnterCommit startinsert
 
 	" https://webpack.github.io/docs/webpack-dev-server.html#working-with-editors-ides-supporting-safe-write
-	autocmd FileType css,javascript,javascriptreact setlocal backupcopy=yes
+	" autocmd FileType css,javascript,javascriptreact setlocal backupcopy=yes
 
 augroup END "}}}
