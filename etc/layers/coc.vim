@@ -134,9 +134,9 @@ augroup Smartf
 augroup end
 
 
-let g:coc_global_extensions =['coc-imselect','coc-html','coc-java','coc-tabnine','coc-css','coc-snippets','coc-eslint','coc-emmet','coc-tsserver','coc-pairs','coc-json','coc-python','coc-imselect','coc-highlight','coc-git','coc-emoji','coc-lists','coc-stylelint','coc-yaml','coc-template','coc-marketplace','coc-gitignore','coc-yank','coc-smartf','coc-calc','coc-explorer','coc-prettier','coc-vimlsp','coc-sh','coc-tslint-plugin','coc-vetur','coc-angular']
+let g:coc_global_extensions =['coc-imselect','coc-html','coc-java','coc-tabnine','coc-css','coc-snippets','coc-eslint','coc-emmet','coc-tsserver','coc-pairs','coc-json','coc-python','coc-imselect','coc-highlight','coc-git','coc-emoji','coc-lists','coc-stylelint','coc-yaml','coc-template','coc-marketplace','coc-gitignore','coc-yank','coc-smartf','coc-calc','coc-prettier','coc-explorer','coc-vimlsp','coc-sh','coc-tslint-plugin','coc-vetur','coc-angular']
 
-noremap <silent> <space>e :CocCommand explorer<cr>
+" noremap <silent> <space>e :CocCommand explorer<cr>
 " coc-cursor
 nmap <silent> <C-c> <Plug>(coc-cursors-position)
 nmap <expr> <silent> <C-m> <SID>select_current_word()

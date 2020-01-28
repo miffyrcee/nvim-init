@@ -40,6 +40,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 	Plug 'luochen1990/rainbow'
 
 
+
 " Ciw and Operator
 	Plug 'AndrewRadev/sideways.vim'
 	Plug 'tpope/vim-surround'
@@ -76,8 +77,11 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 	Plug 'skywind3000/gutentags_plus'
 
     let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+    let s:disable_file = ['quickrun.vim']
     for layer in split(glob(s:home.'/layers/*.vim'),'\n')
-        exec  'so' layer
+        if index(s:disable_file,split(layer,'/')[-1])<0
+            exec  'so' layer
+        endif
     endfor
 
 call plug#end()

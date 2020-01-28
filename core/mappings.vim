@@ -16,11 +16,12 @@ endfunc
 
 
 nmap <silent> <m-"> :call AddE()<cr>
+let s:target_language = ['html','javascript']
 func! AddE()
     if &ft == 'python'
         exec 'norm yssb'
         exec '.s/^/print/g'
-    elseif &ft == 'javascript'
+    elseif index(s:target_language, &ft) > -1
         exec 'norm yssb'
         exec '.s/^/console\.log/g'
     endif
