@@ -1,7 +1,23 @@
-nnoremap <silent> <Space>e :<C-u>Defx -columns=mark:indent:icon:filename:type -split=vertical -direction=topleft -winwidth=30 -listed -resume `expand('%:p:h')` -search=`expand('%:p')`<cr>
+
+nnoremap <silent> <Space>e :<C-u>Defx -columns=mark:indent:icons:filename:type -split=vertical -direction=topleft -winwidth=30 -listed -resume `expand('%:p:h')` -search=`expand('%:p')`<cr>
 
 Plug 'kristijanhusak/defx-icons'
 Plug 'Shougo/defx.nvim',{'do':':UpdateRemotePlugins'}
+Plug 'kristijanhusak/defx-git'
+
+let g:defx_icons_enable_syntax_highlight = 1
+let g:defx_icons_column_length = 2
+let g:defx_icons_directory_icon = ''
+let g:defx_icons_mark_icon = '*'
+let g:defx_icons_copy_icon = ''
+let g:defx_icons_move_icon = ''
+let g:defx_icons_parent_icon = ''
+let g:defx_icons_default_icon = ''
+let g:defx_icons_directory_symlink_icon = ''
+" Options below are applicable only when using "tree" feature
+let g:defx_icons_root_opened_tree_icon = ''
+let g:defx_icons_nested_opened_tree_icon = ''
+let g:defx_icons_nested_closed_tree_icon = ''
 
 augroup user_plugin_defx
 	autocmd!
@@ -83,20 +99,21 @@ function! s:defx_mappings() abort
 	setlocal signcolumn=no
 
 	nnoremap <silent><buffer><expr> <CR>  defx#do_action('drop')
-	nnoremap <silent><buffer><expr> l     <SID>defx_toggle_tree()
+	nnoremap <silent><buffer><expr> o    <SID>defx_toggle_tree()
 	nnoremap <silent><buffer><expr> <bs>     defx#async_action('cd', ['..'])
+	nnoremap <silent><buffer><expr> ~     defx#async_action('cd', ['.'])
 	nnoremap <silent><buffer><expr> st    defx#do_action('multi', [['drop', 'tabnew'], 'quit'])
 	nnoremap <silent><buffer><expr> s     defx#do_action('open', 'botright vsplit')
 	nnoremap <silent><buffer><expr> i     defx#do_action('open', 'botright split')
 	nnoremap <silent><buffer><expr> P     defx#do_action('open', 'pedit')
 	nnoremap <silent><buffer><expr> K     defx#do_action('new_directory')
 	nnoremap <silent><buffer><expr> a     defx#do_action('new_multiple_files')
-	nnoremap <silent><buffer><expr> dd    defx#do_action('remove_trash')
+	nnoremap <silent><buffer><expr> d    defx#do_action('remove')
 	nnoremap <silent><buffer><expr> r     defx#do_action('rename')
 	nnoremap <silent><buffer><expr> x     defx#do_action('execute_system')
 	nnoremap <silent><buffer><expr> .     defx#do_action('toggle_ignored_files')
 	nnoremap <silent><buffer><expr> yy    defx#do_action('yank_path')
-	nnoremap <silent><buffer><expr> ~     defx#async_action('cd')
+	" nnoremap <silent><buffer><expr> ~     defx#async_action('cd')
 	nnoremap <silent><buffer><expr> q     defx#do_action('quit')
 	nnoremap <silent><buffer><expr> <Tab> winnr('$') != 1 ?
 		\ ':<C-u>wincmd w<CR>' :
@@ -105,8 +122,8 @@ function! s:defx_mappings() abort
 	nnoremap <silent><buffer>       [g :<C-u>call <SID>jump_dirty(-1)<CR>
 	nnoremap <silent><buffer>       ]g :<C-u>call <SID>jump_dirty(1)<CR>
 
-	nnoremap <silent><buffer><expr><nowait> \  defx#do_action('cd', getcwd())
-	nnoremap <silent><buffer><expr><nowait> &  defx#do_action('cd', getcwd())
+	" nnoremap <silent><buffer><expr><nowait> h  defx#do_action('cd', getcwd())
+	" nnoremap <silent><buffer><expr><nowait> &  defx#do_action('cd', getcwd())
 	nnoremap <silent><buffer><expr><nowait> c  defx#do_action('copy')
 	nnoremap <silent><buffer><expr><nowait> m  defx#do_action('move')
 	nnoremap <silent><buffer><expr><nowait> p  defx#do_action('paste')
@@ -124,11 +141,11 @@ function! s:defx_mappings() abort
 		\ defx#do_action('toggle_columns', 'indent:mark:filename:type:size:time')
 
 	" Tools
-	nnoremap <silent><buffer><expr> gx  defx#async_action('execute_system')
-	nnoremap <silent><buffer><expr> gd  defx#async_action('multi', ['drop', ['call', '<SID>git_diff']])
-	nnoremap <silent><buffer><expr> gl  defx#async_action('call', '<SID>explorer')
-	nnoremap <silent><buffer><expr> gr  defx#do_action('call', '<SID>grep')
-	nnoremap <silent><buffer><expr> gf  defx#do_action('call', '<SID>find_files')
+	" nnoremap <silent><buffer><expr> gx  defx#async_action('execute_system')
+	" nnoremap <silent><buffer><expr> gd  defx#async_action('multi', ['drop', ['call', '<SID>git_diff']])
+	" nnoremap <silent><buffer><expr> gl  defx#async_action('call', '<SID>explorer')
+	" nnoremap <silent><buffer><expr> gr  defx#do_action('call', '<SID>grep')
+	" nnoremap <silent><buffer><expr> gf  defx#do_action('call', '<SID>find_files')
 	nnoremap <silent><buffer><expr> w   defx#async_action('call', '<SID>toggle_width')
 endfunction
 

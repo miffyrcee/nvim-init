@@ -1,4 +1,4 @@
-noremap <silent> <leader>q :qall<cr>
+noremap <silent> <leader>q :qall!<cr>
 noremap <silent> <leader>w :w ! sudo tee %<cr>
 nnoremap <F6>：UndotreeToggle <cr>
 
