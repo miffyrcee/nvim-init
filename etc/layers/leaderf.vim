@@ -14,7 +14,12 @@ if has('python') || has('python3')
 	" noremap <c-n> :LeaderfMru<cr>
 
 	" ALT+p 打开函数列表，按 i 进入模糊匹配，ESC 退出
-	" noremap <m-p> :LeaderfFunction!<cr>
+	noremap <silent><space>w :LeaderfFunction!<cr>
+	noremap <silent><space>o :LeaderfBufTag!<cr>
+	noremap <silent><space>p :LeaderfTag<cr>
+	noremap <silent><space>m :LeaderfFile<cr>
+	noremap <silent><m-m> :LeaderfMru<cr>
+	" noremap <silent><space>m :LangSelector!<cr>
 
 	" ALT+SHIFT+p 打开 tag 列表，i 进入模糊匹配，ESC退出
 	" noremap <m-P> :LeaderfBufTag!<cr>
@@ -26,7 +31,7 @@ if has('python') || has('python3')
 	" noremap <m-m> :LeaderfTag<cr>
 
 	" 最大历史文件保存 2048 个
-	let g:Lf_MruMaxFiles = 2048
+    let g:Lf_MruMaxFiles = 2048
 
 	" 如何识别项目目录，从当前文件目录向父目录递归知道碰到下面的文件/目录
 	let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']

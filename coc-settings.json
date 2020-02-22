@@ -1,32 +1,32 @@
 {
+    //suggest
     "suggest.enablePreview": true,
     "suggest.autoTrigger": "always",
+    "http.proxy": "http://127.0.0.1:8090",
     "suggest.noselect": true,
     "suggest.numberSelect": false,
-    "tabnine.priority": 0,
     "suggest.timeout": 500,
     "suggest.detailField": "preview",
-    "python.autoUpdateLanguageServer": true,
     "suggest.snippetIndicator": "",
     "suggest.completionItemKindLabels": {
         "keyword": "\uf1de",
         "variable": "\ue79b",
         "value": "\uf89f",
         "operator": "\u03a8",
-        "function": "\u2A15",
+        "function": "\u0192",
         "reference": "\ufa46",
         "constant": "\uf8fe",
         "method": "\uf09a",
         "struct": "\ufb44",
         "class": "\uf0e8",
         "interface": "\uf417",
-        "text": "\u2663",
+        "text": "\ue612",
         "enum": "\uf435",
         "enumMember": "\uf02b",
-        "module": "\uf530",
+        "module": "\uf40d",
         "color": "\ue22b",
         "property": "\ue624",
-        "field": "\uf6a6",
+        "field": "\uf9be",
         "unit": "\uf475",
         "event": "\ufacd",
         "file": "\uf723",
@@ -38,10 +38,16 @@
 
     //diagnostic
     "diagnostic.signOffset": 9999999,
+    "diagnostic.level": "information",
     //"diagnostic.errorSign": "猪",
     //"diagnostic.warningSign": "警",
     "diagnostic.displayByAle": false,
     "diagnostic.refreshOnInsertMode": true,
+
+    //proxy
+    //"http.proxy": "http://127.0.0.1:8090",
+
+
     //git
     "git.enableGutters": true,
     "git.branchCharacter": "\uf408",
@@ -53,18 +59,32 @@
     "git.removedSign.hlGroup": "GitGutterDelete",
     "git.topRemovedSign.hlGroup": "GitGutterDelete",
     "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
+
     //Snippet
     "coc.preferences.snippetStatusText": "Ⓢ ",
-    "diagnostic.level": "information",
+    "snippets.priority": 99,
+
+
+    //tabnine
+    "tabnine.priority": 99,
+
     //python
     "python.autoComplete.addBrackets": true,
+    "python.autoUpdateLanguageServer": true,
     "python.jediEnabled": false,
+    "python.autoComplete.extraPaths": [
+        "${env:SPARK_HOME}/python",
+    ],
+
+
+    //yank
     "yank.enableCompletion": false,
-    //coc-list
-    "list.source.tags.command": "gtags ~/.cache/",
+
+    //list
     "list.source.files.args": ["--hidden", "--files"],
-    "list.source.files.defaultOptions": ["--auto-preview"],
+    "list.source.files.defaultOptions": ["--ignore-case"],
     "list.source.outline.defaultOptions": ["--auto-preview"],
+
 
     //coc-flow
 
@@ -82,26 +102,44 @@
         "clangd": {
             "command": "clangd",
             "args": ["--background-index"],
-            "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+            "rootPatterns": [
+                "compile_flags.txt",
+                "compile_commands.json",
+                ".vim/",
+                ".git/",
+                ".hg/"
+            ],
             "filetypes": ["c", "cpp", "objc", "objcpp"]
         }
     },
-    // coc-explorer
-    "explorer.icon.expanded": "▾",
-    "explorer.keyMappings": {
-        "l": "expandOrShrink"
+
+    //eslint
+    //"eslint.filetypes": ["javascript", "javascript.jsx", "javascriptreact"],
+    //"eslint.autoFix": true,
+    //"eslint.autoFixOnSave": true,
+
+    //emmet
+    "emmet.includeLanguages": {
+        "vue-html": "html",
+        "javascript": "javascriptreact"
     },
-    "explorer.icon.enableNerdfont": true,
 
     //prettier
-    "coc.preferences.formatOnSaveFiletypes": ["css", "markdown"],
-    "prettier.statusItemText": "ⓟ ",
-    "prettier.eslintIntegration": true,
-    "prettier.tslintIntegration": true,
-    "prettier.stylelintIntegration": true,
-    //translator
-    "translator.toLang": "zh",
-    "translator.engines": ["google"],
+    //"coc.preferences.formatOnSaveFiletypes": ["css", "markdown"],
+    //"prettier.statusItemText": "ⓟ ",
+    //"prettier.eslintIntegration": true,
+    //"prettier.tslintIntegration": true,
+    //"prettier.stylelintIntegration": true,
+
     //smartf
-    "smartf.wordJump": false
+    "smartf.wordJump": false,
+
+    //coc-tailwindcss
+    "tailwindCSS.trace.server": "verbose",
+    "tailwindCSS.emmetCompletions": false,
+
+    //kite
+    "kite.enable": false,
+    "kite.startKiteEngineOnStartup": true
+
 }

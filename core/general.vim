@@ -136,9 +136,9 @@ augroup MyAutoCmd
 augroup END
 
 if has('folding')
-	set foldenable
-	set foldmethod=syntax
-	set foldlevelstart=99
+	" set foldenable
+	" set foldmethod=syntax
+	" set foldlevelstart=99
 endif
 set noswapfile
 set nobackup

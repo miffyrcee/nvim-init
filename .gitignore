@@ -41,3 +41,24 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# create by https://github.com/iamcco/coc-gitignore (Fri Jan 31 2020 17:30:49 GMT+0800 (China Standard Time))
+# Vim.gitignore:
+# Swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Session
+Session.vim
+Sessionx.vim
+
+# Temporary
+.netrwhist
+*~
+# Auto-generated tag files
+tags
+# Persistent undo
+[._]*.un~

@@ -95,18 +95,21 @@ nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " Show commands
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
-nnoremap <silent> <space>w  :<C-u>CocList -I symbols<cr>
+" nnoremap <silent> <space>w  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-nnoremap <silent> <space>m  :<C-u>CocList gfiles<CR>
-nnoremap <silent> <m-m>  :<C-u>CocList mru<CR>
+" nnoremap <silent> <space>m  :<C-u>CocList files<CR>
+
+" nnoremap <silent> <m-m>:<C-u>CocList mru<CR>
+
+" nnoremap <silent> <m-g>  :<C-u>CocSearch <CR>
 
 nnoremap <silent> /  :<C-u>CocList lines<CR>
 
@@ -115,8 +118,6 @@ nnoremap <silent> <space>b  :<C-u>CocList buffers<CR>
 nnoremap <silent> <space>h  :<C-u>CocList cmdhistory<CR>
 
 nnoremap <silent> <space>l  :<C-u>CocList lists<CR>
-
-nnoremap <silent> <m-g> :CocSearch expand('<cword>')<cr>
 
 nnoremap <silent> #  :exe 'CocList -I --number-select --normal --input='.expand('<cword>').' words'<CR>
 
@@ -134,9 +135,8 @@ augroup Smartf
 augroup end
 
 
-let g:coc_global_extensions =['coc-imselect','coc-html','coc-java','coc-tabnine','coc-css','coc-snippets','coc-eslint','coc-emmet','coc-tsserver','coc-pairs','coc-json','coc-python','coc-imselect','coc-highlight','coc-git','coc-emoji','coc-lists','coc-stylelint','coc-yaml','coc-template','coc-marketplace','coc-gitignore','coc-yank','coc-smartf','coc-calc','coc-prettier','coc-explorer','coc-vimlsp','coc-sh','coc-tslint-plugin','coc-vetur','coc-angular']
+let g:coc_global_extensions =['coc-imselect','coc-html','coc-java','coc-tabnine','coc-css','coc-snippets','coc-eslint','coc-emmet','coc-tsserver','coc-pairs','coc-json','coc-python','coc-imselect','coc-highlight','coc-git','coc-emoji','coc-lists','coc-stylelint','coc-yaml','coc-template','coc-marketplace','coc-gitignore','coc-yank','coc-smartf','coc-calc','coc-prettier','coc-vimlsp','coc-tslint-plugin','coc-vetur','coc-angular','coc-tailwindcss','coc-webpack']
 
-" noremap <silent> <space>e :CocCommand explorer<cr>
 " coc-cursor
 nmap <silent> <C-c> <Plug>(coc-cursors-position)
 nmap <expr> <silent> <C-m> <SID>select_current_word()
@@ -153,3 +153,4 @@ endfunc
 
 " prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+command! -nargs=0 TailSort :CocCommand tailwindCSS.headwind.sortTailwindClasses

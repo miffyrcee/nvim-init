@@ -1,17 +1,29 @@
 noremap <silent> <leader>q :qall!<cr>
 noremap <silent> <leader>w :w ! sudo tee %<cr>
-nnoremap <F6>：UndotreeToggle <cr>
 
+nmap <silent><F7> :call WebpackRun()<cr>
 
-nmap <silent> <F6> :call Run()<cr>
-func Run()
-    if &ft == 'html'
-        exec ':AsyncStop'
-        exec ':AsyncRun python3 -m http.server'
-    elseif &ft == 'javascript' 
-        exec ':AsyncStop'
-        exec ':AsyncRun python3 -m http.server'
-    endif
+let g:git_rp = system('git rev-parse --show-toplevel|tr -d "\\n"')
+func! WebpackRun()
+    let git_rp = system('git rev-parse --show-toplevel|tr -d "\\n"')
+    let fn = system('find '.git_rp.' -name package-lock.json|tr -d "\\n"')
+    let fp = fnamemodify(fn,':p:h')
+    exec ':cd '.fp
+    exec 'AsyncRun npm run build'
+endfunc
+
+nmap <silent><F6> :call HtmlRun()<cr>
+func! HtmlRun()
+    let $PYTHONUNBUFFERED=1 " 关闭 python 缓存，实时看到输出
+    let basename = ['uwsgi.py','run.py']
+    let rootpath = system('git rev-parse --show-toplevel|tr -d "\\n"')
+    for it in basename
+        let fn = rootpath.'/'.it
+        if file_readable(fn)
+            exec ':AsyncRun -raw python3 '.fn.' %' 
+            break
+        endif
+    endfor
 endfunc
 
 
@@ -22,10 +34,27 @@ func! AddE()
         exec 'norm yssb'
         exec '.s/^/print/g'
     elseif index(s:target_language, &ft) > -1
+        let g:line = getline('.')
+        if stridx(g:line,';')>0
+            exec '.s/'.g:line.'/'.g:line[:-2].'/g'
+        endif
         exec 'norm yssb'
         exec '.s/^/console\.log/g'
     endif
 endfunc
+
+func! AddFlask(var)
+    if &ft == 'html'
+        if a:var == 'line'
+            let s:line = getline('.')
+            exec '.s/'.s:line.'/{% '.s:line.' %}/g'
+        elseif a:var == 'word'
+            let s:word =  expand('<cword>')
+            exec '.s/'.s:word.'/{{'.s:word.'}}/g'
+        endif
+    endif
+endfunc
+
 
 nmap <silent> <m-'> :call DeleteE()<cr>$a=
 func! DeleteE()
@@ -42,6 +71,8 @@ inoremap <c-d> <del>
 inoremap <c-_> <c-k>
 
 
+nmap Z $a
+nmap A ^i
 "----------------------------------------------------------------------
 " 设置 CTRL+HJKL 移动光标（INSERT 模式偶尔需要移动的方便些）
 " 使用 SecureCRT/XShell 等终端软件需设置：Backspace sends delete
@@ -257,7 +288,7 @@ function! ExecuteFile()
 		let cmd = '"$(VIM_FILEDIR)/$(VIM_FILENOEXT)"'
 	elseif &ft == 'python'
 		let $PYTHONUNBUFFERED=1 " 关闭 python 缓存，实时看到输出
-		let cmd = 'python3 "$(VIM_FILEPATH)"'
+        let cmd = 'python3 "$(VIM_FILEPATH)"'
 	elseif &ft == 'javascript'
 		let cmd = 'node "$(VIM_FILEPATH)"'
 	elseif &ft == 'perl'

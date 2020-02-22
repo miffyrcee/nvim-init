@@ -6,13 +6,15 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 "*****************************************************************************
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'tpope/vim-commentary'
-	Plug 'tpope/vim-fugitive'
+	" Plug 'tpope/vim-fugitive'
 	" Plug 'airblade/vim-gitgutter'
 	Plug 'sheerun/vim-polyglot'
+    let g:polyglot_disabled = ['css','python']
 	Plug 'kshenoy/vim-signature'
 	Plug 'sbdchd/neoformat'
     Plug 'junegunn/vim-easy-align'
     Plug 'rhysd/accelerated-jk'
+    " Plug 'lilydjwg/fcitx.vim'
     xmap ga <Plug>(EasyAlign)
     nmap ga <Plug>(EasyAlign)
     Plug 'skywind3000/asyncrun.vim'
@@ -38,10 +40,13 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 	let g:semshi#excluded_buffer=['*']
 	Plug 'Yggdroot/indentLine'
 	Plug 'luochen1990/rainbow'
+    " Plug 'jaxbot/browserlink.vim'
 
 
 
 " Ciw and Operator
+"
+    " Plug 'michaeljsmith/vim-indent-object'
 	Plug 'AndrewRadev/sideways.vim'
 	Plug 'tpope/vim-surround'
 	Plug 'wellle/targets.vim'
@@ -63,6 +68,8 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 	Plug 'bagrat/vim-buffet'
     nnoremap  ]b :bn<CR>
     nnoremap  [b :bp<CR>
+    Plug 'airblade/vim-rooter'
+    let g:rooter_patterns = ['Rakefile', '.git/','.project']
 
 
 " Check and Read dict
@@ -74,12 +81,16 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Tags
     Plug 'ludovicchabant/vim-gutentags'
-	Plug 'skywind3000/gutentags_plus'
+	" Plug 'skywind3000/gutentags_plus'
+    Plug 'Yggdroot/LeaderF'
+
+"debug
+    " Plug 'puremourning/vimspector'
 
     let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
-    let s:disable_file = ['quickrun.vim']
+    let disable_file = ['quickrun.vim','tag.vim']
     for layer in split(glob(s:home.'/layers/*.vim'),'\n')
-        if index(s:disable_file,split(layer,'/')[-1])<0
+        if index(disable_file,split(layer,'/')[-1])<0
             exec  'so' layer
         endif
     endfor

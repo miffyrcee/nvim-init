@@ -125,7 +125,7 @@ function! s:defx_mappings() abort
 	" nnoremap <silent><buffer><expr><nowait> h  defx#do_action('cd', getcwd())
 	" nnoremap <silent><buffer><expr><nowait> &  defx#do_action('cd', getcwd())
 	nnoremap <silent><buffer><expr><nowait> c  defx#do_action('copy')
-	nnoremap <silent><buffer><expr><nowait> m  defx#do_action('move')
+	nnoremap <silent><buffer><expr><nowait> M  defx#do_action('move')
 	nnoremap <silent><buffer><expr><nowait> p  defx#do_action('paste')
 
 	nnoremap <silent><buffer><expr><nowait> <Space>

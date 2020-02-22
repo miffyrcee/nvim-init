@@ -316,6 +316,16 @@
         ],
         "description": "Code snippet for import tf"
     },
+
+    "import sqlalchemy": {
+        "prefix": "import sqlalchemy",
+        "body": [
+            "",
+            "from sqlalchemy import (Column, Date, DateTime, Integer, MetaData, String",
+            "            Table, Time, and_, create_engine, event, pool, types)"
+        ],
+        "description": "Code snippet for import sqlalchemy"
+    },
     "init": {
         "prefix": "init",
         "body": [
@@ -384,8 +394,8 @@
         "prefix": "import os",
         "body": [
             "import os",
-            "current_dir = os.path.dirname(__file__)",
-            "filepath = os.path.join(current_dir,'${filename}')"
+            "cwd = os.path.dirname(__file__)",
+            "fp = os.path.join(cd,'${fp}')"
         ],
         "description": "Code snippet for os"
     },
@@ -393,7 +403,7 @@
     "open": {
         "prefix": "with open",
         "body": [
-            "with open(${1:filepath },'r') as fr:"
+            "with open(${1:fp },'r') as fr:"
         ],
         "description": "Code snippet for super function"
     },
@@ -416,6 +426,18 @@
             "    return dataset"
         ],
         "description": "Code snippet for wrapper"
+    },
+
+    "decode_img": {
+        "prefix": "decode_img",
+        "body": [
+            "def decode_img(img):",
+            "   img = tf.io.read_file(img)",
+            "   img = tf.image.decode_jpeg(img, channels=3)",
+            "   img = tf.image.convert_image_dtype(img, tf.float32)",
+            "   return tf.image.resize(img, size=[100, 50])"
+        ],
+        "description": "Code snippet for img"
     },
     "wrapper": {
         "prefix": "def wrapper",
@@ -479,5 +501,6 @@
             "        break"
         ],
         "description": "Code snippet for Module"
+
     }
 }
