@@ -1,4 +1,4 @@
-<h1 align="center"> ✨ scrapy for music playlist ✨ </h1>
+<h1 align="center"> ✨ neovim for miffyrcee✨ </h1>
 
 Powered by ❤️
 
