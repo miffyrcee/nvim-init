@@ -12,6 +12,4 @@ Just as a try again and again
 
 ### Effect.
 
-- it's from backup/
-
 ![image](https://raw.githubusercontent.com/miffyrcee/nvim-init/master/etc/image/effect.png)
