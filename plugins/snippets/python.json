@@ -535,14 +535,34 @@
         ],
         "description": "Code snippet for proxies"
     },
+
+
+    "map": {
+        "prefix": "map",
+        "body": [
+            "data = list(map(handler,data))"
+        ],
+        "description": "Code snippet for proxies"
+    },
+
+    "quote": {
+        "prefix": "quote",
+        "body": [
+            "from urllib.parse import quote"
+        ],
+        "description": "Code snippet for quote"
+    },
+
     "headers": {
         "prefix": "headers",
         "body": [
             "headers = {",
             "    'User-Agent':",
             "    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3987.149 Safari/537.36',",
-            "    'Content-Length': 20",
-            "    'Content-Type': 'application/json'",
+            "    'Content-Length': 20,",
+            "    'Content-Type': 'application/json',",
+            "    'Sec-Fetch-Site': 'same-site',",
+            "    'Sec-Fetch-Mode': 'cors',",
             "    'Accept-Language':",
             "    'zh-TW,zh-CN;q=0.9,zh;q=0.8,en-US;q=0.7,en;q=0.6,und;q=0.5'",
             "}"
