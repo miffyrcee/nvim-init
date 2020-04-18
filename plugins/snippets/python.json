@@ -54,7 +54,7 @@
     "for": {
         "prefix": "for",
         "body": [
-            "for ${1:target_list} in ${2:expression_list}:",
+            "for ${1:it} in ${2:source}:",
             "\t${3:pass}"
         ],
         "description": "Code snippet for a for loop"
@@ -74,7 +74,7 @@
         "body": [
             "try:",
             "\t${1:pass}",
-            "except ${2:expression} as ${3:identifier}:",
+            "except ${2:Exception}:",
             "\t${4:pass}"
         ],
         "description": "Code snippet for a try/except statement"
@@ -402,20 +402,32 @@
         ],
         "description": "Code snippet for train"
     },
-    "import os": {
-        "prefix": "import os",
+    "os": {
+        "prefix": "os",
         "body": [
-            "import os",
-            "cwd = os.path.dirname(__file__)",
-            "fp = os.path.join(cd,'${fp}')"
+            "from os.path import basename, dirname, isdir, join"
         ],
         "description": "Code snippet for os"
     },
-
-    "open": {
-        "prefix": "with open",
+    "fp": {
+        "prefix": "fp",
         "body": [
-            "with open(${1:fp },'r') as fr:"
+            "${1}_fp = join(dirname(__file__), '${2}'),"
+        ],
+        "description": "Code snippet for fp"
+    },
+
+    "read": {
+        "prefix": "fp",
+        "body": [
+            "${1}_fp = join(dirname(__file__), '${2}'),"
+        ],
+        "description": "Code snippet for fp"
+    },
+    "open": {
+        "prefix": "open",
+        "body": [
+            "open(${1}_fp,'r').read()"
         ],
         "description": "Code snippet for super function"
     },
@@ -515,5 +527,38 @@
         ],
         "description": "Code snippet for Module"
 
+    },
+    "proxies": {
+        "prefix": "proxies",
+        "body": [
+            "proxies = {'http': 'http://127.0.0.1:8090', 'https': 'http://127.0.0.1:8090'}"
+        ],
+        "description": "Code snippet for proxies"
+    },
+    "headers": {
+        "prefix": "headers",
+        "body": [
+            "headers = {",
+            "    'User-Agent':",
+            "    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3987.149 Safari/537.36',",
+            "    'Content-Length': 20",
+            "    'Content-Type': 'application/json'",
+            "    'Accept-Language':",
+            "    'zh-TW,zh-CN;q=0.9,zh;q=0.8,en-US;q=0.7,en;q=0.6,und;q=0.5'",
+            "}"
+        ],
+        "description": "Code snippet for headers"
+    },
+    "post": {
+        "prefix": "post",
+        "body": [
+            "res = requests.post('${1}',",
+            "                    data=data,",
+            "                    headers=headers,",
+            "                    proxies=proxies,",
+            "                    verify=False).text"
+        ],
+        "description": "Code snippet for post"
     }
+
 }
