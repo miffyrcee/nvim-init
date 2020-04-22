@@ -21,11 +21,11 @@ def add_endpoint(fp):
                 lines) and not lines[-1].startswith('endsnippet'):
             lines.append('endsnippet\n')
         lines.append(line)
-    lines.append('endsnippet\n')
+    if not lines[-1].startswith('endsnippet'):
+        lines.append('endsnippet\n')
     open(join(dirname(__file__), fp), 'w').write(''.join(lines))
 
 
 if __name__ == "__main__":
     handler()
     # handler()
-endsnippet
