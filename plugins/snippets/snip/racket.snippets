@@ -1,0 +1,97 @@
+snippet #r
+	#lang racket
+endsnippet
+snippet #tr
+	#lang typed/racket
+endsnippet
+snippet #rg
+	#lang racket/gui
+endsnippet
+snippet #sb
+	#lang scribble/base
+endsnippet
+snippet #d
+	#lang datalog
+endsnippet
+snippet #wi
+	#lang web-server/insta
+endsnippet
+snippet def
+	(define ${1} ${0})
+endsnippet
+snippet defun
+	(define (${1})
+		${0})
+endsnippet
+snippet if
+	(if ${1} ${2} ${0})
+endsnippet
+snippet ifn
+	(if (not ${1}) ${2} {0})
+endsnippet
+snippet ifl
+	(if ${1}
+		(let ()
+			${2})
+		${0})
+endsnippet
+snippet ifnl
+	(if (not ${1})
+		(let ()
+			${2})
+		${0})
+endsnippet
+snippet when
+	(when ${1}
+		${0})
+endsnippet
+snippet cond
+	(cond
+		[(${1})
+			${0}])
+endsnippet
+snippet case
+	(case ${1}
+		[(${2})
+			${0}])
+endsnippet
+snippet match
+	(match ${1}
+		[(${2})
+			${0}])
+endsnippet
+snippet letcc
+	(let/cc here (set! ${1} here) ${0})
+endsnippet
+snippet for
+	(for ([${1} ${2}])
+		${0})
+endsnippet
+snippet req
+	(require ${0})
+endsnippet
+snippet unless
+	(unless ${1} ${2} ${0})
+endsnippet
+snippet let
+	(let ([${1}]) ${0})
+endsnippet
+snippet begin
+	(begin
+		${0})
+endsnippet
+snippet lambda
+	(lambda (${1}) ${0})
+endsnippet
+snippet ifb
+	(if ${1}
+		(begin
+			${2})
+		${0})
+endsnippet
+snippet ifnb
+	(if (not ${1})
+		(begin
+			${2})
+		${0})
+endsnippet

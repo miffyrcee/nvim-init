@@ -1,0 +1,96 @@
+# Import only React
+snippet ri1
+	import React from 'react'
+
+# Import both React and Component
+endsnippet
+snippet ri2
+	import React, { Component } from 'react'
+	import PropTypes from 'prop-types'
+
+# React class
+endsnippet
+snippet rcla
+	class ${1:MyComponent} extends Component {
+		render() {
+			return (
+				${0:<div></div>}
+			)
+		}
+	}
+
+# React constructor
+endsnippet
+snippet rcon
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			${1}: ${0},
+		}
+	}
+
+# Proptypes for React Class
+endsnippet
+snippet rcpt
+	static propTypes = {
+		${1}: PropTypes.${0},
+	}
+
+# Default props for React Class
+endsnippet
+snippet rcdp
+	static defaultProps = {
+		${1}: ${0},
+	}
+
+# Presentational component
+endsnippet
+snippet rcom
+	props => {
+		return (
+			${0:<div></div>}
+		)
+	}
+
+# Proptypes for Presentational component
+endsnippet
+snippet rpt
+	${1}.propTypes = {
+		${2}: PropTypes.${0},
+	}
+
+# Default props for Presentational component
+endsnippet
+snippet rdp
+	${1}.defaultProps = {
+		${2}: ${0},
+	}
+
+# Lifecycle Methods
+endsnippet
+snippet rcdm
+	componentDidMount() {
+		${0:${VISUAL}}
+	}
+
+# State
+endsnippet
+snippet rsst
+	this.setState({
+		${1}: ${0},
+	})
+
+endsnippet
+snippet rtst
+	this.state.${0}
+
+# Props
+endsnippet
+snippet rp
+	props.${0}
+
+endsnippet
+snippet rtp
+	this.props.${0}
+endsnippet

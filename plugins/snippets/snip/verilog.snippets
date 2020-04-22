@@ -1,0 +1,97 @@
+# if statement
+snippet if
+	if (${1}) begin
+		${0}
+	end
+# If/else statements
+endsnippet
+snippet ife
+	if (${1}) begin
+		${2}
+	end
+	else begin
+		${1}
+	end
+# Else if statement
+endsnippet
+snippet eif
+	else if (${1}) begin
+		${0}
+	end
+#Else statement
+endsnippet
+snippet el
+	else begin
+		${0}
+	end
+# While statement
+endsnippet
+snippet wh
+	while (${1}) begin
+		${0}
+	end
+# Repeat Loop
+endsnippet
+snippet rep
+	repeat (${1}) begin
+		${0}
+	end
+# Case statement
+endsnippet
+snippet case
+	case (${1:/* variable */})
+		${2:/* value */}: begin
+			${3}
+		end
+		default: begin
+			${4}
+		end
+	endcase
+# CaseZ statement
+endsnippet
+snippet casez
+	casez (${1:/* variable */})
+		${2:/* value */}: begin
+			${3}
+		end
+		default: begin
+			${4}
+		end
+	endcase
+# Always block
+endsnippet
+snippet al
+	always @(${1:/* sensitive list */}) begin
+		${0}
+	end
+# Module block
+endsnippet
+snippet mod
+	module ${1:module_name} (${2});
+		${0}
+	endmodule
+# For
+endsnippet
+snippet for
+	for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++}) begin
+		${4}
+	end
+# Forever
+endsnippet
+snippet forev
+	forever begin
+		${0}
+	end
+# Function
+endsnippet
+snippet fun
+	function ${1:void} ${2:name}(${3});
+		${0}
+	endfunction: $2
+# Task
+endsnippet
+snippet task
+	task ${1:name}(${2});
+		${0}
+	endtask: $1
+endsnippet

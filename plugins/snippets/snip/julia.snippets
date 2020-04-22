@@ -1,0 +1,139 @@
+snippet #!
+	#!/usr/bin/env julia
+
+# Functions
+endsnippet
+snippet fun function definition
+	function ${1}(${2})
+		${0}
+	end
+
+endsnippet
+snippet ret return
+	return(${0})
+
+# Printing to console
+endsnippet
+snippet pr print
+	print("${1}")
+	${0}
+
+endsnippet
+snippet prl print line
+	println("${1}")
+	${0}
+
+# Includes
+endsnippet
+snippet use load a package
+	using ${0}
+
+endsnippet
+snippet incl include source code
+	include("${1}")
+	${0}
+
+# Loops
+endsnippet
+snippet forc for loop iterating over iterable container
+	for ${1} in ${2}
+		${0}
+	end
+
+endsnippet
+snippet for standard for loop
+	for ${1} = ${2}
+		${0}
+	end
+
+endsnippet
+snippet fornest nested for loop
+	for ${1} = ${2}, ${3} = ${4}
+		${0}
+	end
+
+endsnippet
+snippet wh while loop
+	while ${1} ${2:<=} ${3}
+		${0}
+	end
+
+# Conditionals
+endsnippet
+snippet if if statement
+	if ${1}
+		${0}
+	end
+
+endsnippet
+snippet el else part of statement
+	else
+		${0}
+
+endsnippet
+snippet eif else if part of if statement
+	else if ${1}
+		${0}
+
+endsnippet
+snippet ife full if-else statement
+	if ${1}
+		${2}
+	else
+		${0}
+	end
+
+endsnippet
+snippet tern ternary operator
+	${1} ? ${2} : ${3:nothing}
+
+# Exceptions
+endsnippet
+snippet try try catch
+	try
+		${1:${VISUAL}}
+	catch ${2}
+		${0}
+	end
+
+endsnippet
+snippet fin finally statement
+	finally
+		${0}
+
+endsnippet
+snippet thr throw
+	throw(${1})
+	${0}
+
+# Messages
+endsnippet
+snippet @i
+	@info "${1}" ${0}
+
+endsnippet
+snippet @w
+	@warn "${1}" ${0}
+
+endsnippet
+snippet @e
+	@error "${1}" ${0}
+	
+endsnippet
+snippet @d
+	@debug "${1}" ${0}
+
+endsnippet
+snippet @t @testset with @test 
+	@testset "${1}" begin
+		${2}
+		@test ${0}
+	end
+	
+endsnippet
+snippet @tt @testset with @test_throws
+	@testset "${1}" begin
+		${2}
+		@test_throws ${0}
+	end
+endsnippet

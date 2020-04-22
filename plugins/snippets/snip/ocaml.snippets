@@ -1,0 +1,51 @@
+snippet doc
+	(*
+		${0}
+	 *)
+endsnippet
+snippet let
+	let ${1} = ${2} in
+	${0}
+endsnippet
+snippet fn
+	let ${1} =
+		${0}
+endsnippet
+snippet fun
+	type ${1} = ${0}
+endsnippet
+snippet mod
+	module ${1} = struct
+		${0}
+	end
+endsnippet
+snippet modty
+	module type ${1} = sig
+		${0}
+	end
+endsnippet
+snippet sw
+	match ${1} with
+	| ${2} -> ${0}
+endsnippet
+snippet |
+	| ${1} -> ${0}
+endsnippet
+snippet p
+	|> ${0}
+endsnippet
+snippet if
+	if ${1} then
+		${2}
+	else
+		${0}
+endsnippet
+snippet fnr
+	let rec ${1} =
+		${0}
+endsnippet
+snippet try
+	try
+		${1}
+	with ${0}
+endsnippet

@@ -1,0 +1,162 @@
+#
+## Libraries
+
+snippet lib
+	library ${1}
+	use ${1}.${2}
+
+# Standard Libraries
+endsnippet
+snippet libs
+	library IEEE;
+	use IEEE.std_logic_1164.ALL;
+	use IEEE.numeric_std.ALL;
+
+# Xilinx Library
+endsnippet
+snippet libx
+	library UNISIM;
+	use UNISIM.VCOMPONENTS.ALL;
+
+## Entity Declaration
+endsnippet
+snippet ent
+	entity ${1:`vim_snippets#Filename()`} is
+		generic (
+			${2}
+		);
+		port (
+			${3}
+		);
+	end entity $1;
+
+## Architecture
+endsnippet
+snippet arc
+	architecture ${1:behav} of ${2:`vim_snippets#Filename()`} is
+
+		${3}
+
+	begin
+
+
+	end $1;
+
+## Declarations
+# std_logic
+endsnippet
+snippet st
+	signal ${1} : std_logic;
+# std_logic_vector
+endsnippet
+snippet sv
+	signal ${1} : std_logic_vector (${2} downto 0);
+# std_logic in
+endsnippet
+snippet ist
+	${1} : in std_logic;
+# std_logic_vector in
+endsnippet
+snippet isv
+	${1} : in std_logic_vector (${2} downto 0);
+# std_logic out
+endsnippet
+snippet ost
+	${1} : out std_logic;
+# std_logic_vector out
+endsnippet
+snippet osv
+	${1} : out std_logic_vector (${2} downto 0);
+# unsigned
+endsnippet
+snippet un
+	signal ${1} : unsigned (${2} downto 0);
+## Process Statements
+# process
+endsnippet
+snippet pr
+	process (${1})
+	begin
+		${2}
+	end process;
+# process with clock
+endsnippet
+snippet prc
+	process (${1:clk})
+	begin
+		if rising_edge ($1) then
+			${2}
+		end if;
+	end process;
+# process with clock and reset
+endsnippet
+snippet prcr
+	process (${1:clk}, ${2:nrst})
+	begin
+		if ($2 = '${3:0}') then
+			${4}
+		elsif rising_edge($1) then
+			${5}
+		end if;
+	end process;
+# process all
+endsnippet
+snippet pra
+	process (${1:all})
+	begin
+		${2}
+	end process;
+## Control Statements
+# if
+endsnippet
+snippet if
+	if ${1} then
+		${2}
+	end if;
+# if
+endsnippet
+snippet ife
+	if ${1} then
+		${2}
+	else
+		${3}
+	end if;
+# else
+endsnippet
+snippet el
+	else
+		${1}
+# if
+endsnippet
+snippet eif
+	elsif ${1} then
+		${2}
+# case
+endsnippet
+snippet ca
+	case ${1} is
+		${2}
+	end case;
+# when
+endsnippet
+snippet wh
+	when ${1} =>
+		${2}
+# for
+endsnippet
+snippet for
+	for ${1:i} in ${2} ${3:to} ${4} loop
+		${5}
+	end loop;
+# while
+endsnippet
+snippet wh
+	while ${1} loop
+		${2}
+	end loop;
+## Misc
+# others
+endsnippet
+snippet oth
+	(others => '${1:0}');
+endsnippet

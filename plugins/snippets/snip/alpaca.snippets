@@ -1,0 +1,53 @@
+snippet mod
+	module ${0:`expand('%:t:r')`}
+endsnippet
+snippet imp
+	import ${0:http}
+endsnippet
+snippet impt
+	import type ${0:option.option}
+endsnippet
+snippet exp
+	export ${0}
+endsnippet
+snippet expt
+	export ${0}
+endsnippet
+snippet fn
+	val ${1:fn} ${2}: fn ${3:'a} -> ${4:'a}
+	let $1 ${5} =
+		${0:${VISUAL}}
+endsnippet
+snippet mat
+	match ${1} with
+	| ${2} -> ${0}
+endsnippet
+snippet -
+	| ${1} -> ${0}
+endsnippet
+snippet let
+	let ${1} = ${2:${VISUAL}} in
+	${0}
+endsnippet
+snippet letf
+	let ${1} =
+		${0:${VISUAL}}
+endsnippet
+snippet ty
+	type ${1:msg}
+		= ${0}
+endsnippet
+snippet test
+	test "${1}" =
+		${0:${VISUAL}}
+endsnippet
+snippet doc
+	{-| ${0}
+	-}
+endsnippet
+snippet p
+	|> ${0}
+endsnippet
+snippet ae
+	assert.equal ${0}
+endsnippet

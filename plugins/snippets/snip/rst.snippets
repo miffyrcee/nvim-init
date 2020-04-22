@@ -1,0 +1,129 @@
+# rst
+
+snippet :
+	:${1:field name}: ${0:field body}
+endsnippet
+snippet *
+	*${1:Emphasis}* ${0}
+endsnippet
+snippet **
+	**${1:Strong emphasis}** ${0}
+endsnippet
+snippet _
+	\`${1:hyperlink-name}\`_
+	.. _\`$1\`: ${0:link-block}
+endsnippet
+snippet =
+	${1:Title}
+	=====${2:=}
+	${0}
+endsnippet
+snippet -
+	${1:Title}
+	-----${2:-}
+	${0}
+#some directive
+endsnippet
+snippet img:
+	.. |${1:alias}| image:: ${0:img}
+endsnippet
+snippet fig:
+	.. figure:: ${1:img}
+		:alt: ${2:alter text}
+
+		$0
+endsnippet
+snippet con:
+	.. contents:: ${1:Table of Contents}
+
+		${0:content}
+endsnippet
+snippet cod:
+	.. code:: ${1:type}
+
+		${0:write some code}
+endsnippet
+snippet tip:
+	.. tip::
+		${0:my tips}
+endsnippet
+snippet not:
+	.. note::
+		${0:my notes}
+endsnippet
+snippet	war:
+	.. warning::
+		${0:attention!}
+endsnippet
+snippet imp:
+	.. important::
+		${0:this is importatnt}
+endsnippet
+snippet att:
+	.. attention::
+		${0:hey!}
+endsnippet
+snippet dan:
+	.. danger::
+		${0:ah!}
+endsnippet
+snippet err:
+	.. error::
+		${0:Error occur}
+endsnippet
+snippet cau:
+	.. caution::
+		${0:Watch out!}
+#Sphinx only
+endsnippet
+snippet sid:
+	.. sidebar:: ${1:Title}
+
+		${0}
+endsnippet
+snippet tod:
+	.. todo::
+		${0}
+endsnippet
+snippet lis:
+	.. list-table:: ${1:Title}
+		:header-rows: 1
+		:stub-columns: 0
+
+		* - ${0:R1C1}
+		  - R1C2
+		* - R2C1
+		  - R2C2
+endsnippet
+snippet csv:
+	.. csv-table:: ${1:Title}
+		:header-rows: 1
+		:stub-columns: 0
+
+		${0:R1C1}, R1C2
+		R2C1, R2C2
+endsnippet
+snippet toc:
+	.. toctree::
+		:maxdepth: 2
+
+		${0}
+endsnippet
+snippet dow:
+	:download:\`${1:text} <${0:path}>\`
+endsnippet
+snippet ref:
+	:ref:\`${1:text} <${0:path}>\`
+endsnippet
+snippet doc:
+	:doc:\`${1:text} <${0:path}>\`
+# CJK optimize, CJK has no space between charaters
+endsnippet
+snippet *c
+	\ *${1:Emphasis}*\ ${0}
+endsnippet
+snippet **c
+	\ **${1:Strong emphasis}**\ ${0}
+
+# vim:set list noet sts=0 sw=4 ts=4:
+endsnippet

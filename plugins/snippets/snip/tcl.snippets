@@ -1,0 +1,117 @@
+# #!/usr/bin/env tclsh
+snippet #!
+	#!/usr/bin/env tclsh
+
+# Process
+endsnippet
+snippet pro
+	proc ${1:function_name} {${2:args}} {
+		${0}
+	}
+#xif
+endsnippet
+snippet xif
+	${1:expr}? ${2:true} : ${0:false}
+# Conditional
+endsnippet
+snippet if
+	if {${1}} {
+		${0}
+	}
+# Conditional if..else
+endsnippet
+snippet ife
+	if {${1}} {
+		${2}
+	} else {
+		${0:# else...}
+	}
+endsnippet
+snippet eif
+	elseif {${1}} {
+		${0}
+	}
+# Conditional if..elsif..else
+endsnippet
+snippet ifee
+	if {${1}} {
+		${2}
+	} elseif {${3}} {
+		${4:# elsif...}
+	} else {
+		${0:# else...}
+	}
+# If catch then
+endsnippet
+snippet ifc
+	if { [catch {${1:#do something...}} ${2:err}] } {
+		${0:# handle failure...}
+	}
+# Catch
+endsnippet
+snippet catch
+	catch {${1}} ${2:err} ${0:options}
+# While Loop
+endsnippet
+snippet wh
+	while {${1}} {
+		${0}
+	}
+# For Loop
+endsnippet
+snippet for
+	for {set ${2:var} 0} {$$2 < ${1:count}} {${3:incr} $2} {
+		${0}
+	}
+# Foreach Loop
+endsnippet
+snippet fore
+	foreach ${1:x} {${2:#list}} {
+		${0}
+	}
+# after ms script...
+endsnippet
+snippet af
+	after ${1:ms} ${0:#do something}
+# after cancel id
+endsnippet
+snippet afc
+	after cancel ${0:id or script}
+# after idle
+endsnippet
+snippet afi
+	after idle ${0:script}
+# after info id
+endsnippet
+snippet afin
+	after info ${0:id}
+# Expr
+endsnippet
+snippet exp
+	expr {${0:#expression here}}
+# Switch
+endsnippet
+snippet sw
+	switch ${1:var} {
+		${3:pattern 1} {
+			${0:#do something}
+		}
+		default {
+			${2:#do something}
+		}
+	}
+# Case
+endsnippet
+snippet ca
+	${1:pattern} {
+		${2:#do something}
+	}
+# Namespace eval
+endsnippet
+snippet ns
+	namespace eval ${1:path} {${0:#script...}}
+# Namespace current
+endsnippet
+snippet nsc
+	namespace current
+endsnippet

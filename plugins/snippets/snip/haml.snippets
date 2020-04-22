@@ -1,0 +1,49 @@
+snippet t
+	%table
+		%tr
+			%th
+				${1:headers}
+		%tr
+			%td
+				${0:headers}
+endsnippet
+snippet ul
+	%ul
+		%li
+			${0:item}
+		%li
+endsnippet
+snippet rp
+	= render :partial => "${0:item}"
+endsnippet
+snippet rpc
+	= render :partial => "${1:item}", :collection => ${0:@$1s}
+endsnippet
+snippet rpl
+	= render :partial => "${1:item}", :locals => { :${2:$1} => ${0:@$1} }
+endsnippet
+snippet rpo
+	= render :partial => "${1:item}", :object => ${0:@$1}
+endsnippet
+snippet lt
+	= link_to ${1:name}, ${2:dest}
+endsnippet
+snippet mt
+	= mail_to ${1:email_address}, ${2:name}
+endsnippet
+snippet mts
+	= mail_to ${1:email_address}, ${2:name}, :subject => ${3}, :body => ${4}
+endsnippet
+snippet ife
+	- if ${1:condition}
+		${2:${VISUAL}}
+	- else
+		${0}
+endsnippet
+snippet ifp
+	- if ${1:condition}.presence?
+		${0:${VISUAL}}
+endsnippet
+snippet ntc
+	= number_to_currency(${1})
+endsnippet

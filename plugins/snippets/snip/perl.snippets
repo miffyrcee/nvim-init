@@ -1,0 +1,422 @@
+# #!/usr/bin/perl
+snippet #!
+	#!/usr/bin/env perl
+
+# Hash Pointer
+endsnippet
+snippet .
+	 =>
+# Function
+endsnippet
+snippet sub
+	sub ${1:function_name} {
+		${0}
+	}
+# Conditional
+endsnippet
+snippet if
+	if (${1}) {
+		${0}
+	}
+# Conditional if..else
+endsnippet
+snippet ife
+	if (${1}) {
+		${2}
+	}
+	else {
+		${0}
+	}
+# Conditional if..elsif..else
+endsnippet
+snippet ifee
+	if (${1}) {
+		${2}
+	}
+	elsif (${3}) {
+		${4:# elsif...}
+	}
+	else {
+		${0}
+	}
+endsnippet
+snippet eif
+	elsif (${1}) {
+		${0}
+	}
+# Conditional One-line
+endsnippet
+snippet xif
+	${1:expression} if ${2:condition};
+# Unless conditional
+endsnippet
+snippet unless
+	unless (${1}) {
+		${0}
+	}
+# Unless conditional One-line
+endsnippet
+snippet xunless
+	${1:expression} unless ${2:condition};
+# Try/Except
+endsnippet
+snippet eval
+	local $@;
+	eval {
+		${1:# do something risky...}
+	};
+	if (my $e = $@) {
+		${0:# handle failure...}
+	}
+# While Loop
+endsnippet
+snippet wh
+	while (${1}) {
+		${0}
+	}
+# While Loop One-line
+endsnippet
+snippet xwh
+	${1:expression} while ${2:condition};
+# C-style For Loop
+endsnippet
+snippet cfor
+	for (my $${2:var} = 0; $$2 < ${1:count}; $$2${3:++}) {
+		${0}
+	}
+# For loop one-line
+endsnippet
+snippet xfor
+	${1:expression} for @${2:array};
+# Foreach Loop
+endsnippet
+snippet for
+	foreach my $${1:x} (@${2:array}) {
+		${0}
+	}
+# Foreach Loop One-line
+endsnippet
+snippet fore
+	${1:expression} foreach @${2:array};
+# Package
+endsnippet
+snippet package
+	package ${1:`expand('%:p:s?.*lib/??:r:gs?/?::?')`};
+	use strict;
+	use warnings;
+
+	${0}
+
+	1;
+
+	__END__
+# Package syntax perl >= 5.14
+endsnippet
+snippet packagev514
+	package ${1:`expand('%:p:s?.*lib/??:r:gs?/?::?')`} ${2:0.99};
+	use v5.14;
+	use warnings;
+
+	${0}
+
+	1;
+
+	__END__
+#moose
+endsnippet
+snippet moose
+	use Moose;
+	use namespace::autoclean;
+	${1:#}BEGIN {extends '${2:ParentClass}'};
+
+	${0}
+# parent
+endsnippet
+snippet parent
+	use parent qw(${0:Parent Class});
+# Read File
+endsnippet
+snippet slurp
+	my $${1:var} = do { local $/; open my $file, '<', "${2:file}"; <$file> };
+	${0}
+# strict warnings
+endsnippet
+snippet strwar
+	use strict;
+	use warnings;
+# older versioning with perlcritic bypass
+endsnippet
+snippet vers
+	## no critic
+	our $VERSION = '${0:version}';
+	eval $VERSION;
+	## use critic
+# new 'switch' like feature
+endsnippet
+snippet switch
+	use feature 'switch';
+
+# Anonymous subroutine
+endsnippet
+snippet asub
+	sub {
+		${0}
+	}
+
+
+
+# Begin block
+endsnippet
+snippet begin
+	BEGIN {
+		${0}
+	}
+
+# call package function with some parameter
+endsnippet
+snippet pkgmv
+	__PACKAGE__->${1:package_method}(${0:var})
+
+# call package function without a parameter
+endsnippet
+snippet pkgm
+	__PACKAGE__->${0:package_method}()
+
+# call package "get_" function without a parameter
+endsnippet
+snippet pkget
+	__PACKAGE__->get_${0:package_method}()
+
+# call package function with a parameter
+endsnippet
+snippet pkgetv
+	__PACKAGE__->get_${1:package_method}(${0:var})
+
+# complex regex
+endsnippet
+snippet qrx
+	qr/
+	     ${0:regex}
+	/xms
+
+#simpler regex
+endsnippet
+snippet qr/
+	qr/${0:regex}/x
+
+#given
+endsnippet
+snippet given
+	given ($${1:var}) {
+		${2:# cases}
+		${0:# default}
+	}
+
+# switch-like case
+endsnippet
+snippet when
+	when (${1:case}) {
+		${0}
+	}
+
+# hash slice
+endsnippet
+snippet hslice
+	@{ ${1:hash}  }{ ${0:array} }
+
+
+# map
+endsnippet
+snippet map
+	map {  ${0: body }    }  ${1: @array } ;
+
+
+
+# Pod stub
+endsnippet
+snippet ppod
+	=head1 NAME
+
+	${1:ClassName} - ${2:ShortDesc}
+
+	=head1 SYNOPSIS
+
+	  use $1;
+
+	  ${3:# synopsis...}
+
+	=head1 DESCRIPTION
+
+	${0:# longer description...}
+
+
+	=head1 INTERFACE
+
+
+	=head1 DEPENDENCIES
+
+
+	=head1 SEE ALSO
+
+
+# Heading for a subroutine stub
+endsnippet
+snippet psub
+	=head2 ${1:MethodName}
+
+	${0:Summary....}
+
+# Heading for inline subroutine pod
+endsnippet
+snippet psubi
+	=head2 ${1:MethodName}
+
+	${0:Summary...}
+
+
+	=cut
+# inline documented subroutine
+endsnippet
+snippet subpod
+	=head2 $1
+
+	Summary of $1
+
+	=cut
+
+	sub ${1:subroutine_name} {
+		${0}
+	}
+# Subroutine signature
+endsnippet
+snippet parg
+	=over 2
+
+	=item
+	Arguments
+
+
+	=over 3
+
+	=item
+	C<${1:DataStructure}>
+
+	  ${2:Sample}
+
+
+	=back
+
+
+	=item
+	Return
+
+	=over 3
+
+
+	=item
+	C<${0:...return data}>
+
+
+	=back
+
+
+	=back
+
+
+
+# Moose has
+endsnippet
+snippet has
+	has ${1:attribute} => (
+		is	    => '${2:ro|rw}',
+		isa 	=> '${3:Str|Int|HashRef|ArrayRef|etc}',
+		default => sub {
+			${4:defaultvalue}
+		},
+		${0:# other attributes}
+	);
+
+
+# override
+endsnippet
+snippet override
+	override ${1:attribute} => sub {
+		${2:# my $self = shift;};
+		${0:# my ($self, $args) = @_;};
+	};
+
+
+# use test classes
+endsnippet
+snippet tuse
+	use Test::More;
+	use Test::Deep; # (); # uncomment to stop prototype errors
+	use Test::Exception;
+
+# local test lib
+endsnippet
+snippet tlib
+	use lib qw{ ./t/lib };
+
+#test methods
+endsnippet
+snippet tmeths
+	$ENV{TEST_METHOD} = '${0:regex}';
+
+# runtestclass
+endsnippet
+snippet trunner
+	use ${0:test_class};
+	$1->runtests();
+
+# Test::Class-style test
+endsnippet
+snippet tsub
+	sub t${1:number}_${2:test_case} :Test(${3:num_of_tests}) {
+		my $self = shift;
+		${0}
+
+	}
+
+# Test::Routine-style test
+endsnippet
+snippet trsub
+	test ${1:test_name} => { description => '${2:Description of test.}'} => sub {
+		my ($self) = @_;
+		${0}
+	};
+
+#prep test method
+endsnippet
+snippet tprep
+	sub prep${1:number}_${2:test_case} :Test(startup) {
+		my $self = shift;
+		${0}
+	}
+
+# cause failures to print stack trace
+endsnippet
+snippet debug_trace
+	use Carp; # 'verbose';
+	# cloak "die"
+	# warn "warning"
+	$SIG{'__DIE__'} = sub {
+		require Carp; Carp::confess
+	};
+
+endsnippet
+snippet dump
+	use Data::Dump qw(dump);
+	warn dump ${1:variable}
+
+endsnippet
+snippet ddp
+	use DDP;
+	p ${1:variable}
+
+endsnippet
+snippet subtest
+	subtest '${1: test_name}' => sub {
+		${2}
+	};
+endsnippet

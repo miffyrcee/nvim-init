@@ -1,0 +1,141 @@
+# shebang
+snippet #!
+	#!/usr/bin/env perl6
+
+# Hash Pointer
+endsnippet
+snippet .
+	 =>
+# Function
+endsnippet
+snippet sub
+	sub ${1:function_name}(${2:Str $var}) {
+		${3}
+	}
+endsnippet
+snippet mul
+	multi ${1:function_name}(${2:Str $var}) {
+		${3}
+	}
+# Conditional
+endsnippet
+snippet if
+	if ${1} {
+		${2}
+	}
+# Conditional if..else
+endsnippet
+snippet ife
+	if ${1} {
+		${2}
+	}
+	else {
+		${3}
+	}
+endsnippet
+snippet eif
+	elsif ${1) {
+		${2}
+	}
+# Conditional One-line
+endsnippet
+snippet xif
+	${1:expression} if ${2:condition};
+# Unless conditional
+endsnippet
+snippet unless
+	unless ${1} {
+		${2}
+	}
+# Unless conditional One-line
+endsnippet
+snippet xunless
+	${1:expression} unless ${2:condition};
+# Ternary conditional
+endsnippet
+snippet tc
+	${1:condition} ?? ${2:value-if-true} !! ${3:value-if-false};
+# given - when (perl6 switch)
+endsnippet
+snippet switch
+	given ${1:$var} {
+	  when ${2:condition} {
+		  ${3:# code block ...}
+	  }
+	  ${4}
+	  default {
+		  ${5}
+	  }
+	}
+# 'loop' - C's for.
+endsnippet
+snippet loop
+	loop (my ${1:$i} = 0; $$1 < ${2:count}; $$1++) {
+		${3}
+	}
+# for loop
+endsnippet
+snippet for
+	for ${1:@array} -> ${2:$variable} {
+		${3}
+	}
+# While Loop
+endsnippet
+snippet wh
+	while ${1} {
+		${2}
+	}
+# Repeat while and repean until
+endsnippet
+snippet rp
+	repeat {
+		${1}
+	} ${2:while|until} ${3};
+# classes ..
+endsnippet
+snippet cl
+	${1:my} class ${2:ClassName} ${3:is|does Parent|Role}{
+		${4}
+	}
+endsnippet
+snippet has
+	has ${1:Type} ${2:$!identifier};
+endsnippet
+snippet mth
+	method ${1:method_name}(${2:$attr}) {
+		${3}
+	}
+endsnippet
+snippet pmth
+	method ${1:!}${2:method_name}(${3:$attr}) {
+		${4}
+	}
+endsnippet
+snippet smth
+	submethod ${1:submethod_name}(${2:$attr}) {
+		${3}
+	}
+# Tests
+endsnippet
+snippet test
+	use v6;
+	use Test;
+	${1:use lib 'lib';}
+
+	plan ${2:$num-tests};
+
+# IO
+endsnippet
+snippet slurp
+	my ${1:$var} = "${2:filename}".IO.slurp;
+endsnippet
+snippet rfile
+	for "${1:filename}".IO.lines -> $line {
+		${2}
+	}
+endsnippet
+snippet open
+	my $fh = open "${1:filename}", ${2::r|:w|:a};
+	${3:# actions};
+	$fh.close;
+endsnippet

@@ -1,0 +1,44 @@
+snippet +
+	(+ ${1}
+		${0})
+
+endsnippet
+snippet -
+	(- ${1}
+		${0})
+
+endsnippet
+snippet /
+	(/ ${1}
+		${0})
+
+endsnippet
+snippet *
+	(* ${1}
+		${0})
+
+# Definition
+endsnippet
+snippet def
+	(define (${1:name})
+			(${0:definition}))
+
+# Definition with lambda
+endsnippet
+snippet defl
+	(define ${1:name}
+		(lambda (x)(${0:definition})))
+
+# Condition
+endsnippet
+snippet cond
+	(cond ((${1:predicate}) (${2:action}))
+		((${3:predicate}) (${0:action})))
+
+# If statement
+endsnippet
+snippet if
+	(if (${1:predicate})
+		(${2:true-action})
+		(${0:false-action}))
+endsnippet

@@ -1,0 +1,17 @@
+snippet if # {{#if value}} ... {{/if}}
+	{{#if ${1:value}}}
+	${0:${VISUAL}}
+	{{/if}}
+endsnippet
+snippet ifn # {{#unless value}} ... {{/unless}}
+	{{#unless ${1:value}}}
+	${0:${VISUAL}}
+	{{/unless}}
+endsnippet
+snippet ife # {{#if value}} ... {{else}} .. {{/if}}
+	{{#if ${1:value}}}
+	${2:${VISUAL}}
+	{{else}}
+	${3}
+	{{/if}}
+endsnippet

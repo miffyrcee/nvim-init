@@ -1,0 +1,307 @@
+snippet steps
+	steps {
+		sh '${1:make check}'
+		junit '${2:reports/**/*.xml}' 
+	}
+	${0}
+
+endsnippet
+snippet stage
+	stage('${1:Test}'){
+		steps {
+			sh '${2:make check}'
+			junit '${3:reports/**/*.xml}' 
+		}
+	}
+	${0}
+
+endsnippet
+snippet pipeline
+	pipeline {
+		agent any 
+		stages {
+			stage('${1:Build}') { 
+				steps { 
+					sh '${2:make}' 
+				}
+			}
+		}
+	}
+	${0}
+
+endsnippet
+snippet pipeline_sample
+	pipeline {
+		agent any 
+		stages {
+			stage('${1:Build}') { 
+				steps { 
+					sh '${2:make}' 
+				}
+			}
+			stage('${3:Test}'){
+				steps {
+					sh '${4:make check}'
+					junit '${5:reports/**/*.xml}' 
+				}
+			}
+			stage('${6:Deploy}') {
+				steps {
+					sh '${7:make publish}'
+				}
+			}
+		}
+	}
+	${0}
+
+endsnippet
+snippet d
+	docker {
+		image '${1:myregistry.com/node'}'
+		label '${2:my-defined-label'}'
+		registryUrl '${3:https://myregistry.com/'}'
+		registryCredentialsId '${4:myPredefinedCredentialsInJenkins'}'
+	}
+
+
+endsnippet
+snippet df
+	dockerfile {
+		filename '${1:Dockerfile.build}'
+		dir '${2:build}'
+		label '${3:my-defined-label}'
+		registryUrl '${4:https://myregistry.com/}'
+		registryCredentialsId '${5:myPredefinedCredentialsInJenkins}'
+	}
+
+endsnippet
+snippet  pa
+	post { 
+		always { 
+			${1}
+		}
+	}
+	${0}
+
+endsnippet
+snippet  pc
+	post { 
+		changed { 
+			${1}
+		}
+	}
+	${0}
+
+endsnippet
+snippet  pf
+	post { 
+		fixed { 
+			${1}
+		}
+	}
+	${0}
+
+endsnippet
+snippet  pr
+	post { 
+		regression { 
+			${1}
+		}
+	}
+	${0}
+
+endsnippet
+snippet  pab
+	post { 
+		aborted { 
+			${1}
+		}
+	}
+	${0}
+
+endsnippet
+snippet pfa 
+	post { 
+		failure { 
+			${1}
+		}
+	}
+	${0}
+
+endsnippet
+snippet ps
+	post { 
+		success { 
+			${1}
+		}
+	}
+	${0}
+
+endsnippet
+snippet pu
+	post { 
+		unstable { 
+			${1}
+		}
+	}
+	${0}
+
+endsnippet
+snippet  pc
+	post { 
+		cleanup { 
+			${1}
+		}
+	}
+	${0}
+
+
+endsnippet
+snippet psss
+	pipeline {
+		agent any 
+		stages {
+			stage('${1:Build}') { 
+				steps { 
+					sh '${2:make}' 
+				}
+			}
+	}
+	${0}
+
+endsnippet
+snippet sss
+	stages {
+		stage('${1:Build}') { 
+			steps { 
+				sh '${2:make}' 
+			}
+		}
+	}
+	${0}
+
+
+
+endsnippet
+snippet parameters
+	parameters{ 
+		${1}
+	}
+	${0}
+
+endsnippet
+snippet paramtext
+		text(name: "${1:BIOGRAPHY}" , defaultValue: "${2:default}" , description: "${3:Enter some information about the person}")
+		${0}
+
+endsnippet
+snippet parambool
+		booleanParam(name: "${1:TOGGLE}" , defaultValue: ${2:default}, description: "${3:Toggle this value}")
+		${0}
+
+endsnippet
+snippet paramchoice
+		choice(name: "${1:CHOICE}" , choices: ["${2:Choices}",] , description: "${3:Pick something}") 
+		${0}
+
+endsnippet
+snippet parampassword
+		password(name: "${1:PASSWORD}" , defaultValue: "${2:SECRET}" , description: "${3:Enter a password}")
+		${0}
+
+endsnippet
+snippet paramfile
+		file(name: "${1:FILE}" , description: "${2:Choose a file to upload}")${0}
+		${0}
+
+endsnippet
+snippet triggers
+	triggers {
+		cron('${1:H */4 * * 1-5}')
+	}
+	${0}
+
+endsnippet
+snippet input
+	input {
+		message '${1:Should we continue?}'
+		ok '${2:Yes, we should.}'
+		submitter '${3:alice,bob}'
+		parameters { 
+			string(name: '${4:PERSON}' , defaultValue: '${5:Mr Jenkins}' , description: '${6:Who should I say hello to?}')
+		}
+	}
+	${0}
+
+endsnippet
+snippet whenbranch
+	when {
+		branch '${1:branch}'
+	}
+	${0}
+endsnippet
+snippet whenbuildingTag
+	when {
+		buildingTag '${1:tag}'
+	}
+	${0}
+endsnippet
+snippet whenchangelog
+	when {
+		changelog '${1:changelog}'
+	}
+	${0}
+endsnippet
+snippet whenchangeset
+	when {
+		changeset '${1:changeSet}'
+	}
+	${0}
+endsnippet
+snippet whenchangeRequest
+	when {
+		changeRequest '${1:changeRequest}'
+	}
+	${0}
+endsnippet
+snippet whenenvironment
+	when {
+		environment '${1:environment}'
+	}
+	${0}
+endsnippet
+snippet whenequals
+	when {
+		equals '${1:equals}'
+	}
+	${0}
+endsnippet
+snippet whenexpression
+	when {
+		expression '${1:expression}'
+	}
+	${0}
+endsnippet
+snippet whentag
+	when {
+		tag '${1:tag}'
+	}
+	${0}
+endsnippet
+snippet whennot
+	when {
+		not '${1:not}'
+	}
+	${0}
+endsnippet
+snippet whenallOf
+	when {
+		allOf '${1:allOf}'
+	}
+	${0}
+endsnippet
+snippet whenanyOf
+	when {
+		anyOf '${1:anyOf}'
+	}
+endsnippet

@@ -1,0 +1,374 @@
+# Port of Shopify Liquid Template Snippets
+# https://marketplace.visualstudio.com/items?itemName=killalau.vscode-liquid-snippets
+
+snippet if
+	{% if ${1:condition} %}
+		${0:${VISUAL}}
+	{% endif %}
+endsnippet
+snippet else
+	{% else %}
+endsnippet
+snippet elsif
+	{% elsif ${1:condition} %}
+endsnippet
+snippet ifelse
+	{% if ${1:condition} %}
+		${2}
+	{% else %}
+		${0}
+	{% endif %}
+endsnippet
+snippet unless
+	{% unless ${1:condition} %}
+		${0:${VISUAL}}
+	{% endunless %}
+endsnippet
+snippet case
+	{% case ${1:variable} %}
+		{% when ${2:condition} %}
+			${3}
+		{% else %}
+			${0}
+	{% endcase %}
+endsnippet
+snippet when
+	{% when ${1:condition} %}
+		${0}
+endsnippet
+snippet cycle
+	{% cycle '${1:odd}', '${2:even}' %}
+endsnippet
+snippet cyclegroup
+	{% cycle '${1:group name}': '${2:odd}', '${3:even}' %}
+endsnippet
+snippet for
+	{% for ${1:item} in ${2:collection} %}
+		${0}
+	{% endfor %}
+endsnippet
+snippet limit
+	limit: ${1:5}
+endsnippet
+snippet offset
+	offset: ${1:0}
+endsnippet
+snippet reversed
+	reversed
+endsnippet
+snippet break
+	{% break %}
+endsnippet
+snippet continue
+	{% continue %}
+endsnippet
+snippet tablerow
+	{% tablerow ${1:item} in ${2:collection} cols: ${3:2} %}
+		${0}
+	{% endtablerow %}
+endsnippet
+snippet assign
+	{% assign ${1:variable} = ${0:value} %}
+endsnippet
+snippet increment
+	{% increment ${0:variable} %}
+endsnippet
+snippet decrement
+	{% decrement ${0:variable} %}
+endsnippet
+snippet capture
+	{% capture ${1:variable} %}${0}{% endcapture %}
+endsnippet
+snippet include
+	{% include '${0:snippet}' %}
+endsnippet
+snippet includewith
+	{% include '${1:snippet}', ${2:variable}: ${0:value} %}
+endsnippet
+snippet render
+	{% render '${0:snippet}' %}
+endsnippet
+snippet renderwith
+	{% render '${1:snippet}', ${2:variable}: ${0:value} %}
+endsnippet
+snippet section
+	{% section '${1:snippet}' %}
+endsnippet
+snippet raw
+	{% raw %}${0}{% endraw %}
+endsnippet
+snippet layout
+	{% layout '${1:layout}' %}
+endsnippet
+snippet layoutnone
+	{% layout none %}
+endsnippet
+snippet paginate
+	{% paginate ${1:collection.products} by ${2:12} %}
+		{% for ${3:product} in $1 %}
+			${0}
+		{% endfor %}
+	{% endpaginate %}
+endsnippet
+snippet schema
+	{% schema %}
+		{
+			${0}
+		}
+	{% endschema %}
+endsnippet
+snippet stylesheet
+	{% stylesheet %}
+		${0}
+	{% endstylesheet %}
+endsnippet
+snippet stylesheet_scss
+	{% stylesheet '${1:scss}' %}
+		${0}
+	{% endstylesheet %}
+endsnippet
+snippet javascript
+	{% javascript %}
+		${0}
+	{% endjavascript %}
+endsnippet
+snippet comment-
+	{%- comment -%}${0}{%- endcomment -%}
+endsnippet
+snippet if-
+	{%- if ${1:condition} -%}
+		${0:${VISUAL}}
+	{%- endif -%}
+endsnippet
+snippet else-
+	{%- else -%}
+endsnippet
+snippet elsif-
+	{%- elsif ${1:condition} -%}
+endsnippet
+snippet ifelse-
+	{%- if ${1:condition} -%}
+		${2}
+	{%- else -%}
+		${0}
+	{%- endif -%}
+endsnippet
+snippet unless-
+	{%- unless ${1:condition} -%}
+		${0:${VISUAL}}
+	{%- endunless -%}
+endsnippet
+snippet case-
+	{%- case ${1:variable} -%}
+		{%- when ${2:condition} -%}
+			${3}
+		{%- else -%}
+			${0}
+	{%- endcase -%}
+endsnippet
+snippet when-
+	{%- when ${1:condition} -%}
+		${0}
+endsnippet
+snippet cycle-
+	{%- cycle '${1:odd}', '${2:even}' -%}
+endsnippet
+snippet cyclegroup-
+	{%- cycle '${1:group name}': '${2:odd}', '${3:even}' -%}
+endsnippet
+snippet for-
+	{%- for ${1:item} in ${2:collection} -%}
+		${0}
+	{%- endfor -%}
+endsnippet
+snippet continue-
+	{%- continue -%}
+endsnippet
+snippet tablerow-
+	{%- tablerow ${1:item} in ${2:collection} cols: ${3:2} -%}
+		${0}
+	{%- endtablerow -%}
+endsnippet
+snippet assign-
+	{%- assign ${1:variable} = ${0:value} -%}
+endsnippet
+snippet capture-
+	{%- capture ${1:variable} -%}${0}{%- endcapture -%}
+endsnippet
+snippet include-
+	{%- include '${0:snippet}' -%}
+endsnippet
+snippet includewith-
+	{%- include '${1:snippet}', ${2:variable}: ${0:value} -%}
+endsnippet
+snippet join
+	| join: '${1:, }'
+endsnippet
+snippet first
+	| first
+endsnippet
+snippet last
+	| last
+endsnippet
+snippet concat
+	| concat: ${1:array}
+endsnippet
+snippet map
+	| map: '${1:key}'
+endsnippet
+snippet reverse
+	| reverse
+endsnippet
+snippet size
+	| size
+endsnippet
+snippet sort
+	| sort: '${1:key}'
+endsnippet
+snippet uniq
+	| uniq
+endsnippet
+snippet img_tag
+	| img_tag
+endsnippet
+snippet img_tag_param
+	| img_tag: '${1:alt}', '${2:class}'
+endsnippet
+snippet script_tag
+	| script_tag
+endsnippet
+snippet stylesheet_tag
+	| stylesheet_tag
+endsnippet
+snippet abs
+	| abs
+endsnippet
+snippet ceil
+	| ceil
+endsnippet
+snippet divided_by
+	| divided_by: ${1:2}
+endsnippet
+snippet floor
+	| floor
+endsnippet
+snippet minus
+	| minus: ${1:1}
+endsnippet
+snippet plus
+	| plus: ${1:1}
+endsnippet
+snippet round
+	| round: ${1:0}
+endsnippet
+snippet times
+	| times: ${1:1}
+endsnippet
+snippet modulo
+	| modulo: ${1:2}
+endsnippet
+snippet money
+	| money
+endsnippet
+snippet money_with_currency
+	| money_with_currency
+endsnippet
+snippet money_without_trailing_zeros
+	| money_without_trailing_zeros
+endsnippet
+snippet money_without_currency
+	| money_without_currency
+endsnippet
+snippet append
+	| append: '${1:string}'
+endsnippet
+snippet camelcase
+	| camelcase
+endsnippet
+snippet capitalize
+	| capitalize
+endsnippet
+snippet downcase
+	| downcase
+endsnippet
+snippet escape
+	| escape
+endsnippet
+snippet handleize
+	| handleize
+endsnippet
+snippet md5
+	| md5
+endsnippet
+snippet newline_to_br
+	| newline_to_br
+endsnippet
+snippet pluralize
+	| pluralize: '${1:item}', '${2:items}'
+endsnippet
+snippet prepend
+	| prepend: '${1:string}'
+endsnippet
+snippet remove
+	| remove: '${1:string}'
+endsnippet
+snippet remove_first
+	| remove_first: '${1:string}'
+endsnippet
+snippet replace
+	| replace: '${1:target}', '${2:replace}'
+endsnippet
+snippet replace_first
+	| replace_first: '${1:target}', '${2:replace}'
+endsnippet
+snippet slice
+	| slice: ${1:0}, ${2:5}
+endsnippet
+snippet slice_single
+	| slice: ${1:at}
+endsnippet
+snippet split
+	| split: '${1:,}'
+endsnippet
+snippet strip
+	| strip
+endsnippet
+snippet lstrip
+	| lstrip
+endsnippet
+snippet rstrip
+	| rstrip
+endsnippet
+snippet strip_html
+	| strip_html
+endsnippet
+snippet strip_newlines
+	| strip_newlines
+endsnippet
+snippet truncate
+	| truncate: ${1:20}, '${2:...}'
+endsnippet
+snippet truncatewords
+	| truncatewords: ${1:5}, '${2:...}'
+endsnippet
+snippet upcase
+	| upcase
+endsnippet
+snippet url_encode
+	| url_encode
+endsnippet
+snippet url_escape
+	| url_escape
+endsnippet
+snippet url_param_escape
+	| url_param_escape
+endsnippet
+snippet asset_url
+	| asset_url
+endsnippet
+snippet asset_img_url
+	| asset_img_url: '${1:medium}'
+endsnippet
+snippet img_url
+	| img_url: '${1:medium}'
+endsnippet
