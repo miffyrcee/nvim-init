@@ -2,6 +2,20 @@ noremap <silent> <leader>q :qall!<cr>
 noremap <silent> <leader>w :w ! sudo tee %<cr>
 
 nmap <silent><F7> :call WebpackRun()<cr>
+nmap yy 0y$
+" nmap dd 0d$
+nmap <silent> <m-,> ysaw(
+nmap <silent> <m-.> ysa(( 
+nmap <silent> <m-\> yss"$a,<esc>
+nmap <silent> <m-;> ^dt=<esc>i
+nmap <silent> <m-'> $a <esc>dT=<esc>a
+
+command! -nargs=1 Replace :call ReplaceGlobalString(<f-args>)
+
+function! ReplaceGlobalString(tar)
+    let cword = expand('<cword>')
+    exec ':%s/'.cword.'/'.a:tar.'/g'
+endfunction
 
 let g:git_rp = system('git rev-parse --show-toplevel|tr -d "\\n"')
 func! WebpackRun()
@@ -15,7 +29,7 @@ endfunc
 nmap <silent><F6> :call HtmlRun()<cr>
 func! HtmlRun()
     let $PYTHONUNBUFFERED=1 " 关闭 python 缓存，实时看到输出
-    let basename = ['uwsgi.py','run.py']
+    let basename = ['uwsgi.py','run.py','app.py']
     let rootpath = system('git rev-parse --show-toplevel|tr -d "\\n"')
     for it in basename
         let fn = rootpath.'/'.it
@@ -28,18 +42,18 @@ endfunc
 
 
 nmap <silent> <m-"> :call AddE()<cr>
-let s:target_language = ['html','javascript']
+let s:tl = ['html','javascript']
 func! AddE()
     if &ft == 'python'
-        exec 'norm yssb'
-        exec '.s/^/print/g'
-    elseif index(s:target_language, &ft) > -1
+        exec 'norm yssbiprint'
+        " exec '.s/^/print/g'
+    elseif index(s:tl, &ft) > -1
         let g:line = getline('.')
         if stridx(g:line,';')>0
             exec '.s/'.g:line.'/'.g:line[:-2].'/g'
         endif
-        exec 'norm yssb'
-        exec '.s/^/console\.log/g'
+        exec 'norm yssbiconsole.log'
+        " exec '.s/^/console\.log/g'
     endif
 endfunc
 
@@ -55,13 +69,6 @@ func! AddFlask(var)
     endif
 endfunc
 
-
-nmap <silent> <m-'> :call DeleteE()<cr>$a=
-func! DeleteE()
-    if stridx(getline('.'),'=')
-        exec '.s/=.*//g'
-    endif
-endfunc
 "----------------------------------------------------------------------
 " INSERT 模式下使用 EMACS 键位
 "----------------------------------------------------------------------

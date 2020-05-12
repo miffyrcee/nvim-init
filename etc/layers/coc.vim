@@ -135,7 +135,7 @@ augroup Smartf
 augroup end
 
 
-let g:coc_global_extensions =['coc-imselect','coc-html','coc-java','coc-tabnine','coc-css','coc-snippets','coc-eslint','coc-emmet','coc-tsserver','coc-pairs','coc-json','coc-python','coc-imselect','coc-highlight','coc-git','coc-emoji','coc-lists','coc-stylelint','coc-yaml','coc-template','coc-marketplace','coc-gitignore','coc-yank','coc-smartf','coc-calc','coc-prettier','coc-vimlsp','coc-tslint-plugin','coc-vetur','coc-angular','coc-tailwindcss','coc-webpack']
+let g:coc_global_extensions =['coc-imselect','coc-html','coc-java','coc-css','coc-snippets','coc-eslint','coc-emmet','coc-tsserver','coc-pairs','coc-json','coc-python','coc-imselect','coc-highlight','coc-git','coc-emoji','coc-lists','coc-stylelint','coc-yaml','coc-template','coc-marketplace','coc-gitignore','coc-yank','coc-smartf','coc-calc','coc-prettier','coc-vimlsp','coc-tslint-plugin','coc-vetur','coc-angular','coc-tailwindcss','coc-webpack','coc-kite']
 
 " coc-cursor
 nmap <silent> <C-c> <Plug>(coc-cursors-position)

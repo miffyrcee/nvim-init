@@ -3,7 +3,7 @@ let g:neoformat_run_all_formatters = 1
 let g:neoformat_enabled_javascript=['clang-format']
 " let g:neoformat_only_msg_on_error = 1
 
-let s:ft = [ 'javascript','css','html','markdown']
+let s:ft = [ 'javascript','css','html','markdown','ts']
 func FormartV()
 
     if index(s:ft, &ft)>0

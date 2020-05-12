@@ -1,5 +1,6 @@
 set background=dark
 color gruvbox
+" color ocean
 " color dracula
 
 " Vim Colors

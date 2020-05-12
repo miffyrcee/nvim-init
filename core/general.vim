@@ -47,18 +47,21 @@ set ttimeoutlen=10
 set updatetime=100
 set undofile
 set undodir=~/.tmp/undo
+
 set relativenumber
 set backspace=2
 set backspace=indent,eol,start
 " Tabs and Indents {{{
 " ----------------
-set textwidth=80    " Text width maximum chars before wrapping
+" set textwidth=80    " Text width maximum chars before wrapping
+
 set expandtab     " Don't expand tabs to spaces.
 set tabstop=4       " The number of spaces a tab is
 set softtabstop=4   " While performing editing operations
 set shiftwidth=4    " Number of spaces to use in auto(indent)
 set smarttab        " Tab insert blanks according to 'shiftwidth'
 set autoindent      " Use same indenting on new lines
+set noautoindent
 set smartindent     " Smart autoindenting on new lines
 set shiftround      " Round indent to multiple of 'shiftwidth'
 " }}}

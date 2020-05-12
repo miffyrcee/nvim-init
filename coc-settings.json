@@ -1,8 +1,10 @@
 {
+
     //suggest
     "suggest.enablePreview": true,
     "suggest.autoTrigger": "always",
-    "http.proxy": "http://127.0.0.1:8090",
+    "suggest.languageSourcePriority": 99,
+    "suggest.enablePreselect": true,
     "suggest.noselect": true,
     "suggest.numberSelect": false,
     "suggest.timeout": 500,
@@ -45,8 +47,7 @@
     "diagnostic.refreshOnInsertMode": true,
 
     //proxy
-    //"http.proxy": "http://127.0.0.1:8090",
-
+    "http.proxy": "http://127.0.0.1:8090",
 
     //git
     "git.enableGutters": true,
@@ -65,22 +66,16 @@
     "snippets.priority": 99,
 
 
-    //tabnine
-    "tabnine.priority": 99,
 
     //python
-    "python.autoComplete.addBrackets": true,
-    "python.autoUpdateLanguageServer": true,
     "python.jediEnabled": false,
-    "python.autoComplete.extraPaths": [
-        "${env:SPARK_HOME}/python",
-    ],
-
 
     //yank
     "yank.enableCompletion": false,
 
+
     //list
+    "list.source.grep.command": "rg",
     "list.source.files.args": ["--hidden", "--files"],
     "list.source.files.defaultOptions": ["--ignore-case"],
     "list.source.outline.defaultOptions": ["--auto-preview"],
@@ -130,16 +125,25 @@
     //"prettier.eslintIntegration": true,
     //"prettier.tslintIntegration": true,
     //"prettier.stylelintIntegration": true,
+    "prettier.singleQuote": true,
+    "prettier.disableLanguages": [
+        "vue",
+        "python"
+    ],
 
     //smartf
     "smartf.wordJump": false,
 
     //coc-tailwindcss
     "tailwindCSS.trace.server": "verbose",
-    "tailwindCSS.emmetCompletions": false,
+    "tailwindCSS.emmetCompletions": true,
+
 
     //kite
-    "kite.enable": false,
-    "kite.startKiteEngineOnStartup": true
+    "kite.enable": true,
+    "kite.startKiteEngineOnStartup": true,
+    "kite.enableSnippets": false
+
+    //java
 
 }
