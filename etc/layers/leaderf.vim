@@ -47,7 +47,7 @@ if has('python') || has('python3')
 
 	" 模糊匹配忽略扩展名
 	let g:Lf_WildIgnore = {
-				\ 'dir': ['.svn','.git','.hg'],
+				\ 'dir': ['.svn','.git','.hg','node_modules'],
 				\ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
 				\ }
 

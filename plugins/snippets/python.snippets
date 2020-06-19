@@ -1,13 +1,37 @@
 snippet #!
 #!/usr/bin/env python3
 endsnippet
-
-snippet os
-from os.path import dirname,join,basename
+snippet init
+def __init__(self,${0:key}):
+	super().__init__()
+	self.${0:key} = ${0:key}
 endsnippet
-
+snippet try
+try:
+	${0}
+	pass
+except Exception as identifier:
+	pass
+endsnippet
+snippet loop
+loop = asyncio.get_event_loop()
+task = loop.create_task(${0}())
+loop.run_until_complete(task)
+loop.run_forever()
+endsnippet
+snippet img
+def get_image_b64encode(fn):
+	return b64encode(open(get_fp(fn), 'br').read()).decode('utf-8')
+endsnippet
+snippet fp
+def get_fp(${0:fn}):
+	return join(dirname(abspath(__file__)), ${0:fn})
+endsnippet
+snippet os
+from os.path import dirname,join,basename,abspath
+endsnippet
 snippet proxies
-proxies = {"http": "http://127.0.0.1:8090", "https": "http://127.0.0.1:8090"}
+proxies = {"http": "http://127.0.0.1:8080", "https": "http://127.0.0.1:8080"}
 endsnippet
 snippet findall
 findall('(?<=\')${0}(?=\')', '')
@@ -146,7 +170,7 @@ elif ${1:condition}:
 	${0:${VISUAL}}
 # For
 endsnippet
-snippet for
+snippet for python
 for ${1:item} in ${2:items}:
 	${0}
 # Encodes
@@ -559,4 +583,9 @@ def __index__(self):
 
 def __coerce__(self, other):
 	${25:pass}
+endsnippet
+snippet for
+{% for ${1} in ${2} %}
+	${0}
+{% endfor %}
 endsnippet

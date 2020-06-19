@@ -14,7 +14,7 @@ command! -nargs=1 Replace :call ReplaceGlobalString(<f-args>)
 
 function! ReplaceGlobalString(tar)
     let cword = expand('<cword>')
-    exec ':%s/'.cword.'/'.a:tar.'/g'
+    exec ':%s/burp0/'.a:tar.'/g'
 endfunction
 
 let g:git_rp = system('git rev-parse --show-toplevel|tr -d "\\n"')
@@ -281,8 +281,15 @@ let g:asyncrun_open = 6
 let g:asyncrun_bell = 1
 
 " F5 运行文件
+"
+" F5 运行文件
+nnoremap <silent> <F4> :call EP()<cr>
 nnoremap <silent> <F5> :call ExecuteFile()<cr>
 nnoremap <silent> <m-$> :AsyncStop<cr>
+
+func! EP()
+    exec 'AsyncRun proxychains python3 '.expand('%:p')
+endfunc
 "----------------------------------------------------------------------
 " F5 运行当前文件：根据文件类型判断方法，并且输出到 quickfix 窗口
 "----------------------------------------------------------------------

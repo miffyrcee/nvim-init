@@ -16,5 +16,5 @@ nmap <silent> <m-=> :call LangSelector(0)<cr><esc>V<Plug>TranslateRV
 " " Replace the text with translation
 " nmap <silent> <Leader>r <Plug>TranslateR
 " vmap <silent> <Leader> r <Plug> TranslateRV。
-let g:translator_proxy_url = 'http://127.0.0.1:8090/'
+" let g:translator_proxy_url = 'http://127.0.0.1:8090/'
 let g:translator_default_engines=['google']
